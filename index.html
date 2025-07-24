@@ -53,9 +53,10 @@
         }
 
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 C30 10, 15 25, 15 45 L15 70 C15 85, 25 90, 35 85 L50 75 L65 85 C75 90, 85 85, 85 70 L85 45 C85 25, 70 10, 50 10 Z M35 35 C40 35, 40 45, 35 45 C30 45, 30 35, 35 35 Z M65 35 C70 35, 70 45, 65 45 C60 45, 60 35, 65 35 Z" fill="white"/></svg>') center/contain no-repeat;
+            width: 36px;
+            height: 36px;
+            background: url('logo.jpeg') center/contain no-repeat;
+            border-radius: 4px;
         }
 
         .nav-links {
@@ -98,6 +99,7 @@
             align-items: center;
             position: relative;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            overflow: hidden;
         }
 
         .hero::before {
@@ -107,7 +109,24 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background: url('A31D2CDB-4DF8-47AB-9BDA-A2B342DB5169_1_201_a.jpeg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 10, 0.8) 0%, 
+                rgba(10, 10, 10, 0.6) 50%,
+                rgba(10, 10, 10, 0.8) 100%);
+            z-index: 1;
         }
 
         .hero-content {
