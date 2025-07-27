@@ -181,6 +181,7 @@
         .section {
             padding: 6rem 0;
             position: relative;
+            min-height: 100vh;
         }
 
         .section-title {
@@ -339,31 +340,140 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Privacy Section */
+        /* Privacy Section - NOVA VERSÃO EXPANDIDA */
         .privacy-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.05);
             padding: 3rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
         }
 
-        .privacy-content h3 {
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .privacy-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             color: #ffffff;
-            margin: 2rem 0 1rem;
+        }
+
+        .privacy-header .last-updated {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .privacy-toc {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-toc h3 {
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .privacy-toc ol {
+            list-style: none;
+            counter-reset: item;
+            padding-left: 0;
+        }
+
+        .privacy-toc li {
+            counter-increment: item;
+            margin-bottom: 0.5rem;
+        }
+
+        .privacy-toc li::before {
+            content: counter(item) ". ";
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 600;
         }
 
-        .privacy-content p, .privacy-content ul {
+        .privacy-toc a {
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .privacy-toc a:hover {
+            color: #ffffff;
+        }
+
+        .privacy-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .privacy-section:last-child {
+            border-bottom: none;
+        }
+
+        .privacy-section h3 {
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .privacy-section h4 {
+            color: #ffffff;
+            margin: 2rem 0 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .privacy-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
             line-height: 1.7;
         }
 
-        .privacy-content ul {
-            margin-left: 2rem;
+        .privacy-section ul, .privacy-section ol {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            padding-left: 2rem;
+        }
+
+        .privacy-section ul li, .privacy-section ol li {
+            margin-bottom: 0.5rem;
+        }
+
+        .privacy-section strong {
+            color: #ffffff;
+        }
+
+        .privacy-section em {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
         }
 
         /* Footer */
@@ -425,6 +535,14 @@
             .footer-links {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .privacy-content {
+                padding: 2rem;
+            }
+
+            .privacy-toc {
+                padding: 1.5rem;
             }
         }
 
@@ -572,41 +690,178 @@
             </div>
         </section>
 
-        <!-- Privacy Section -->
+        <!-- Privacy Section - NOVA VERSÃO COMPLETA -->
         <section id="privacy" class="section-content hidden">
             <div class="section">
                 <div class="container">
-                    <h2 class="section-title fade-in">Política de Privacidade</h2>
-                    
                     <div class="privacy-content fade-in">
-                        <h3>1. Informações que Coletamos</h3>
-                        <p>Coletamos apenas as informações essenciais para fornecer nossos serviços de desenvolvimento de aplicativos e jogos, incluindo dados de contato e preferências de usuário quando fornecidos voluntariamente.</p>
-                        
-                        <h3>2. Como Usamos suas Informações</h3>
-                        <p>Utilizamos as informações coletadas para:</p>
-                        <ul>
-                            <li>Fornecer e melhorar nossos serviços de desenvolvimento</li>
-                            <li>Comunicar atualizações sobre projetos e produtos</li>
-                            <li>Oferecer suporte técnico personalizado</li>
-                            <li>Analisar e otimizar a experiência do usuário</li>
-                        </ul>
-                        
-                        <h3>3. Proteção de Dados</h3>
-                        <p>Implementamos medidas de segurança robustas para proteger suas informações, incluindo criptografia de dados, acesso restrito e monitoramento contínuo de segurança.</p>
-                        
-                        <h3>4. Compartilhamento de Informações</h3>
-                        <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros para fins comerciais. Compartilhamento ocorre apenas quando necessário para prestação de serviços ou cumprimento de obrigações legais.</p>
-                        
-                        <h3>5. Seus Direitos</h3>
-                        <p>Você tem direito a acessar, corrigir, excluir ou portar suas informações pessoais. Para exercer esses direitos, entre em contato através dos canais disponibilizados.</p>
-                        
-                        <h3>6. Cookies e Tecnologias Similares</h3>
-                        <p>Utilizamos cookies e tecnologias similares para melhorar a funcionalidade de nossos produtos e analisar seu uso, sempre respeitando suas preferências de privacidade.</p>
-                        
-                        <h3>7. Contato</h3>
-                        <p>Para questões relacionadas à privacidade e proteção de dados, entre em contato: contato@graycatcorp.com</p>
-                        
-                        <p><strong>Última atualização:</strong> julho de 2025</p>
+                        <div class="privacy-header">
+                            <h2>Política de Privacidade</h2>
+                            <p class="last-updated">Última atualização: 25 de julho de 2025</p>
+                        </div>
+
+                        <div class="privacy-toc">
+                            <h3>Índice</h3>
+                            <ol>
+                                <li><a href="#info-collect">Que informações coletamos?</a></li>
+                                <li><a href="#info-use">Como processamos suas informações?</a></li>
+                                <li><a href="#legal-bases">Bases legais para processamento</a></li>
+                                <li><a href="#info-share">Quando e com quem compartilhamos informações?</a></li>
+                                <li><a href="#info-retention">Por quanto tempo mantemos suas informações?</a></li>
+                                <li><a href="#info-safety">Como mantemos suas informações seguras?</a></li>
+                                <li><a href="#privacy-rights">Quais são seus direitos de privacidade?</a></li>
+                                <li><a href="#minors">Coletamos informações de menores?</a></li>
+                                <li><a href="#policy-updates">Fazemos atualizações nesta política?</a></li>
+                                <li><a href="#contact">Como entrar em contato conosco?</a></li>
+                            </ol>
+                        </div>
+
+                        <div id="info-collect" class="privacy-section">
+                            <h3>1. QUE INFORMAÇÕES COLETAMOS?</h3>
+                            
+                            <h4>Informações pessoais que você nos fornece</h4>
+                            <p><strong><em>Resumo:</em></strong> <em>Coletamos informações pessoais que você nos fornece voluntariamente.</em></p>
+                            
+                            <p>Coletamos informações pessoais que você nos fornece voluntariamente ao se registrar em nossos Serviços, demonstrar interesse em obter informações sobre nós ou nossos produtos e Serviços, participar de atividades nos Serviços ou entrar em contato conosco.</p>
+                            
+                            <p><strong>Informações pessoais fornecidas por você.</strong> As informações pessoais que coletamos podem incluir:</p>
+                            <ul>
+                                <li>Nomes</li>
+                                <li>Endereços de email</li>
+                                <li>Senhas</li>
+                                <li>Preferências de contato</li>
+                                <li>Endereços de cobrança</li>
+                                <li>Idade</li>
+                                <li>Dados de contato ou autenticação</li>
+                            </ul>
+
+                            <h4>Dados de aplicativos</h4>
+                            <p>Se você usar nossos aplicativos, também podemos coletar as seguintes informações:</p>
+                            <ul>
+                                <li><em>Dados do dispositivo móvel:</em> Coletamos automaticamente informações do dispositivo (como ID do dispositivo móvel, modelo e fabricante), sistema operacional, informações de versão e configuração do sistema, números de identificação do dispositivo e aplicativo, tipo e versão do navegador, modelo de hardware, provedor de serviços de Internet e/ou operadora móvel e endereço IP (Internet Protocol).</li>
+                                <li><em>Notificações push:</em> Podemos solicitar o envio de notificações push sobre sua conta ou determinados recursos dos aplicativos. Se desejar optar por não receber esses tipos de comunicação, você pode desativá-los nas configurações do seu dispositivo.</li>
+                            </ul>
+                        </div>
+
+                        <div id="info-use" class="privacy-section">
+                            <h3>2. COMO PROCESSAMOS SUAS INFORMAÇÕES?</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Processamos suas informações para fornecer, melhorar e administrar nossos Serviços, comunicar com você, para segurança e prevenção de fraudes, e para cumprir a lei.</em></p>
+                            
+                            <p><strong>Processamos suas informações pessoais por várias razões, dependendo de como você interage com nossos Serviços, incluindo:</strong></p>
+                            
+                            <ul>
+                                <li><strong>Para facilitar a criação e autenticação de contas e gerenciar contas de usuário.</strong> Podemos processar suas informações para que você possa criar e fazer login em sua conta, bem como manter sua conta em funcionamento.</li>
+                                <li><strong>Para fornecer e facilitar a entrega de serviços ao usuário.</strong> Podemos processar suas informações para fornecer o serviço solicitado.</li>
+                                <li><strong>Para responder a consultas de usuários/oferecer suporte aos usuários.</strong> Podemos processar suas informações para responder às suas consultas e resolver quaisquer problemas potenciais que você possa ter com o serviço solicitado.</li>
+                                <li><strong>Para cumprir e gerenciar seus pedidos.</strong> Podemos processar suas informações para cumprir e gerenciar seus pedidos, pagamentos, devoluções e trocas feitas através dos Serviços.</li>
+                                <li><strong>Para enviar comunicações de marketing e promocionais.</strong> Podemos processar as informações pessoais que você nos envia para nossos fins de marketing, se estiver de acordo com suas preferências de marketing.</li>
+                                <li><strong>Para proteger nossos Serviços.</strong> Podemos processar suas informações como parte de nossos esforços para manter nossos Serviços seguros e protegidos, incluindo monitoramento e prevenção de fraudes.</li>
+                                <li><strong>Para identificar tendências de uso.</strong> Podemos processar informações sobre como você usa nossos Serviços para entender melhor como eles estão sendo usados para que possamos melhorá-los.</li>
+                            </ul>
+                        </div>
+
+                        <div id="legal-bases" class="privacy-section">
+                            <h3>3. BASES LEGAIS PARA PROCESSAMENTO</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Só processamos suas informações pessoais quando acreditamos que é necessário e temos uma razão legal válida para fazê-lo sob a lei aplicável.</em></p>
+                            
+                            <p>Podemos confiar nas seguintes bases legais para processar suas informações pessoais:</p>
+                            <ul>
+                                <li><strong>Consentimento.</strong> Podemos processar suas informações se você nos deu permissão (consentimento) para usar suas informações pessoais para uma finalidade específica.</li>
+                                <li><strong>Execução de um Contrato.</strong> Podemos processar suas informações pessoais quando acreditamos que é necessário para cumprir nossas obrigações contratuais com você.</li>
+                                <li><strong>Interesses Legítimos.</strong> Podemos processar suas informações quando acreditamos que é razoavelmente necessário para alcançar nossos interesses comerciais legítimos.</li>
+                                <li><strong>Obrigações Legais.</strong> Podemos processar suas informações onde acreditamos que é necessário para o cumprimento de nossas obrigações legais.</li>
+                            </ul>
+                        </div>
+
+                        <div id="info-share" class="privacy-section">
+                            <h3>4. QUANDO E COM QUEM COMPARTILHAMOS INFORMAÇÕES?</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Podemos compartilhar informações em situações específicas e com terceiros específicos.</em></p>
+                            
+                            <p><strong>Fornecedores, Consultores e Outros Prestadores de Serviços Terceirizados.</strong> Podemos compartilhar seus dados com fornecedores terceirizados, prestadores de serviços, contratados ou agentes que prestam serviços para nós ou em nosso nome.</p>
+                            
+                            <p>As categorias de terceiros com quem podemos compartilhar informações pessoais incluem:</p>
+                            <ul>
+                                <li>Redes de anúncios</li>
+                                <li>Serviços de computação em nuvem</li>
+                                <li>Serviços de análise de dados</li>
+                                <li>Processadores de pagamento</li>
+                                <li>Ferramentas de vendas e marketing</li>
+                                <li>Redes sociais</li>
+                                <li>Provedores de hospedagem de sites</li>
+                            </ul>
+                        </div>
+
+                        <div id="info-retention" class="privacy-section">
+                            <h3>5. POR QUANTO TEMPO MANTEMOS SUAS INFORMAÇÕES?</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Mantemos suas informações pelo tempo necessário para cumprir os propósitos descritos nesta Política de Privacidade, a menos que exigido de outra forma por lei.</em></p>
+                            
+                            <p>Manteremos suas informações pessoais apenas pelo tempo necessário para os propósitos estabelecidos nesta Política de Privacidade. Nenhum propósito neste aviso exigirá que mantenhamos suas informações pessoais por mais de três (3) meses após o encerramento da conta do usuário.</p>
+                        </div>
+
+                        <div id="info-safety" class="privacy-section">
+                            <h3>6. COMO MANTEMOS SUAS INFORMAÇÕES SEGURAS?</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Visamos proteger suas informações pessoais através de um sistema de medidas de segurança organizacionais e técnicas.</em></p>
+                            
+                            <p>Implementamos medidas de segurança técnicas e organizacionais apropriadas e razoáveis, projetadas para proteger a segurança de qualquer informação pessoal que processamos. No entanto, apesar de nossas salvaguardas e esforços para proteger suas informações, nenhuma transmissão eletrônica pela Internet ou tecnologia de armazenamento de informações pode ser garantida como 100% segura.</p>
+                        </div>
+
+                        <div id="privacy-rights" class="privacy-section">
+                            <h3>7. QUAIS SÃO SEUS DIREITOS DE PRIVACIDADE?</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Em algumas regiões, você tem direitos que lhe permitem maior acesso e controle sobre suas informações pessoais.</em></p>
+                            
+                            <p>Em algumas regiões, você tem certos direitos sob as leis de proteção de dados aplicáveis. Estes podem incluir o direito de:</p>
+                            <ul>
+                                <li>Solicitar acesso e obter uma cópia de suas informações pessoais</li>
+                                <li>Solicitar retificação ou apagamento</li>
+                                <li>Restringir o processamento de suas informações pessoais</li>
+                                <li>Portabilidade de dados (se aplicável)</li>
+                                <li>Não estar sujeito à tomada de decisão automatizada</li>
+                            </ul>
+
+                            <h4>Informações da conta</h4>
+                            <p>Se você gostaria de revisar ou alterar as informações em sua conta ou encerrar sua conta, você pode:</p>
+                            <ul>
+                                <li>Fazer login nas configurações de sua conta e atualizar sua conta de usuário</li>
+                                <li>Através da página de configurações dentro do aplicativo</li>
+                            </ul>
+                        </div>
+
+                        <div id="minors" class="privacy-section">
+                            <h3>8. COLETAMOS INFORMAÇÕES DE MENORES?</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Não coletamos dados ou fazemos marketing para crianças menores de 18 anos de idade.</em></p>
+                            
+                            <p>Não coletamos, solicitamos dados ou fazemos marketing para crianças menores de 18 anos de idade, nem vendemos conscientemente essas informações pessoais. Ao usar os Serviços, você declara que tem pelo menos 18 anos.</p>
+                        </div>
+
+                        <div id="policy-updates" class="privacy-section">
+                            <h3>9. FAZEMOS ATUALIZAÇÕES NESTA POLÍTICA?</h3>
+                            
+                            <p><strong><em>Resumo:</em></strong> <em>Sim, atualizaremos esta política conforme necessário para permanecer em conformidade com as leis relevantes.</em></p>
+                            
+                            <p>Podemos atualizar esta Política de Privacidade de tempos em tempos. A versão atualizada será indicada por uma data "Revisada" atualizada no topo desta Política de Privacidade. Recomendamos que você revise esta Política de Privacidade com frequência para se manter informado sobre como estamos protegendo suas informações.</p>
+                        </div>
+
+                        <div id="contact" class="privacy-section">
+                            <h3>10. COMO ENTRAR EM CONTATO CONOSCO?</h3>
+                            
+                            <p>Se você tiver dúvidas ou comentários sobre esta política, você pode nos enviar um email para <strong>suportebr@graycatcorp.com</strong> ou entrar em contato por correio em:</p>
+                            
+                            <div class="contact-info">
+                                <h4>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</h4>
+                                <p>AL SALVADOR, 1057</p>
+                                <p>TORRE AMÉRICA SALA 911 E 912</p>
+                                <p>SALVADOR, BAHIA 41820790</p>
+                                <p>Brazil</p>
+                                <p><strong>Email:</strong> suportebr@graycatcorp.com</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
