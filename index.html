@@ -340,140 +340,158 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Privacy Section - NOVA VERSÃO EXPANDIDA */
-        .privacy-content {
-            max-width: 900px;
+        /* Legal Documents Section */
+        .legal-content {
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .document-card {
             background: rgba(255, 255, 255, 0.05);
             padding: 3rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: left;
-        }
-
-        .privacy-header {
+            transition: all 0.3s ease;
+            cursor: pointer;
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .privacy-header h2 {
+        .document-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .document-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #333333, #666666);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2.5rem;
+            margin: 0 auto 2rem;
+        }
+
+        .document-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: #ffffff;
+            font-weight: 600;
         }
 
-        .privacy-header .last-updated {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        .privacy-toc {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 3rem;
-        }
-
-        .privacy-toc h3 {
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .privacy-toc ol {
-            list-style: none;
-            counter-reset: item;
-            padding-left: 0;
-        }
-
-        .privacy-toc li {
-            counter-increment: item;
-            margin-bottom: 0.5rem;
-        }
-
-        .privacy-toc li::before {
-            content: counter(item) ". ";
+        .document-card p {
             color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .document-card .date {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+
+        /* Document Viewer */
+        .document-viewer {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .document-viewer.active {
+            display: block;
+        }
+
+        .document-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #333333, #555555);
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #444444, #666666);
+            transform: translateY(-2px);
+        }
+
+        .document-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 1.8rem;
+            color: #ffffff;
             font-weight: 600;
         }
 
-        .privacy-toc a {
+        .document-content {
             color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
+            line-height: 1.7;
         }
 
-        .privacy-toc a:hover {
-            color: #ffffff;
-        }
-
-        .privacy-section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .privacy-section:last-child {
-            border-bottom: none;
-        }
-
-        .privacy-section h3 {
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .privacy-section h4 {
+        .document-content h1,
+        .document-content h2,
+        .document-content h3,
+        .document-content h4 {
             color: #ffffff;
             margin: 2rem 0 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
         }
 
-        .privacy-section p {
-            color: rgba(255, 255, 255, 0.8);
+        .document-content p {
             margin-bottom: 1.5rem;
-            line-height: 1.7;
         }
 
-        .privacy-section ul, .privacy-section ol {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            padding-left: 2rem;
+        .document-content ul,
+        .document-content ol {
+            margin: 1rem 0 1.5rem 2rem;
         }
 
-        .privacy-section ul li, .privacy-section ol li {
+        .document-content li {
             margin-bottom: 0.5rem;
         }
 
-        .privacy-section strong {
+        .document-content strong {
             color: #ffffff;
         }
 
-        .privacy-section em {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .contact-info {
+        .document-content .highlight,
+        .document-content .warning-box,
+        .document-content .contact-info,
+        .document-content .lgpd-box,
+        .document-content .brazilian-law,
+        .document-content .cdc-box,
+        .document-content .disclaimer-box {
             background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-        }
-
-        .contact-info h4 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+            margin: 1.5rem 0;
         }
 
         /* Footer */
@@ -528,7 +546,8 @@
             
             .about-grid,
             .services-grid,
-            .contact-grid {
+            .contact-grid,
+            .documents-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -537,12 +556,13 @@
                 gap: 1rem;
             }
 
-            .privacy-content {
+            .document-viewer {
                 padding: 2rem;
             }
 
-            .privacy-toc {
-                padding: 1.5rem;
+            .document-header {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -556,6 +576,25 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Custom scrollbar for document viewer */
+        .document-viewer::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .document-viewer::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .document-viewer::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .document-viewer::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
@@ -571,7 +610,7 @@
                 <li><a href="#about" onclick="showSection('about')">Sobre</a></li>
                 <li><a href="#services" onclick="showSection('services')">Serviços</a></li>
                 <li><a href="#contact" onclick="showSection('contact')">Contato</a></li>
-                <li><a href="#privacy" onclick="showSection('privacy')">Privacidade</a></li>
+                <li><a href="#legal" onclick="showSection('legal')">Documentos Legais</a></li>
             </ul>
         </nav>
     </header>
@@ -690,176 +729,252 @@
             </div>
         </section>
 
-        <!-- Privacy Section - NOVA VERSÃO COMPLETA -->
-        <section id="privacy" class="section-content hidden">
+        <!-- Legal Documents Section -->
+        <section id="legal" class="section-content hidden">
             <div class="section">
                 <div class="container">
-                    <div class="privacy-content fade-in">
-                        <div class="privacy-header">
-                            <h2>Política de Privacidade</h2>
-                            <p class="last-updated">Última atualização: 25 de julho de 2025</p>
+                    <div class="legal-content">
+                        <h2 class="section-title fade-in">Documentos Legais</h2>
+                        <p class="section-subtitle fade-in">
+                            Acesse nossos documentos legais, políticas de privacidade e termos de uso. 
+                            Transparência e conformidade legal são fundamentais em nossos serviços.
+                        </p>
+
+                        <!-- Documents Grid -->
+                        <div id="documents-list" class="documents-grid">
+                            <div class="document-card fade-in" onclick="showDocument('privacy')">
+                                <div class="document-icon">🔒</div>
+                                <h3>Política de Privacidade</h3>
+                                <p>Como coletamos, processamos e protegemos suas informações pessoais conforme a LGPD.</p>
+                                <div class="date">Atualizada em 25 de julho de 2025</div>
+                            </div>
+                            
+                            <div class="document-card fade-in" onclick="showDocument('terms')">
+                                <div class="document-icon">📋</div>
+                                <h3>Termos de Uso</h3>
+                                <p>Condições gerais para uso de nossos serviços e plataformas digitais.</p>
+                                <div class="date">Atualizada em 27 de julho de 2025</div>
+                            </div>
+                            
+                            <div class="document-card fade-in" onclick="showDocument('eula')">
+                                <div class="document-icon">📱</div>
+                                <h3>EULA - Comboa</h3>
+                                <p>Contrato de Licença do Usuário Final específico para o aplicativo Comboa.</p>
+                                <div class="date">Atualizada em 25 de julho de 2025</div>
+                            </div>
                         </div>
 
-                        <div class="privacy-toc">
-                            <h3>Índice</h3>
-                            <ol>
-                                <li><a href="#info-collect">Que informações coletamos?</a></li>
-                                <li><a href="#info-use">Como processamos suas informações?</a></li>
-                                <li><a href="#legal-bases">Bases legais para processamento</a></li>
-                                <li><a href="#info-share">Quando e com quem compartilhamos informações?</a></li>
-                                <li><a href="#info-retention">Por quanto tempo mantemos suas informações?</a></li>
-                                <li><a href="#info-safety">Como mantemos suas informações seguras?</a></li>
-                                <li><a href="#privacy-rights">Quais são seus direitos de privacidade?</a></li>
-                                <li><a href="#minors">Coletamos informações de menores?</a></li>
-                                <li><a href="#policy-updates">Fazemos atualizações nesta política?</a></li>
-                                <li><a href="#contact">Como entrar em contato conosco?</a></li>
-                            </ol>
+                        <!-- Document Viewers -->
+                        <div id="privacy-doc" class="document-viewer">
+                            <div class="document-header">
+                                <button class="back-button" onclick="hideDocument()">← Voltar</button>
+                                <div class="document-title">Política de Privacidade</div>
+                            </div>
+                            <div class="document-content">
+                                <p><strong>Última atualização: 25 de julho de 2025</strong></p>
+                                
+                                <div class="contact-info">
+                                    <p>Esta Política de Privacidade para <strong>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</strong> (operando como <strong>GRAY CAT CORPORATION</strong>) ("<strong>nós</strong>," "<strong>nos</strong>," ou "<strong>nossa</strong>"), descreve como e por que podemos acessar, coletar, armazenar, usar e/ou compartilhar ("<strong>tratar</strong>") suas informações pessoais quando você usa nossos serviços ("<strong>Serviços</strong>"), incluindo quando você:</p>
+                                </div>
+
+                                <h2>RESUMO DOS PONTOS PRINCIPAIS</h2>
+                                
+                                <p><strong><em>Este resumo fornece pontos-chave da nossa Política de Privacidade, mas você pode encontrar mais detalhes sobre qualquer um desses tópicos consultando as seções específicas abaixo.</em></strong></p>
+                                
+                                <p><strong>Que dados pessoais tratamos?</strong> Quando você visita, usa ou navega em nossos Serviços, podemos tratar dados pessoais dependendo de como você interage conosco e com os Serviços, as escolhas que você faz e os produtos e recursos que você usa.</p>
+                                
+                                <h2>1. QUE DADOS COLETAMOS?</h2>
+                                
+                                <h3>Dados pessoais que você nos fornece</h3>
+                                <div class="highlight">
+                                    <p><strong><em>Em resumo:</em></strong> <em>Coletamos dados pessoais que você nos fornece voluntariamente.</em></p>
+                                </div>
+                                
+                                <p>Coletamos dados pessoais que você fornece voluntariamente quando se registra nos Serviços, expressa interesse em obter informações sobre nós ou nossos produtos e Serviços, quando participa de atividades nos Serviços, ou quando entra em contato conosco.</p>
+                                
+                                <h4>Dados Pessoais Fornecidos por Você</h4>
+                                <ul>
+                                    <li>Nome completo</li>
+                                    <li>Endereços de e-mail</li>
+                                    <li>Senhas (criptografadas)</li>
+                                    <li>Preferências de contato e comunicação</li>
+                                    <li>Dados de faturamento</li>
+                                    <li>Informações de pagamento (processadas por terceiros)</li>
+                                    <li>Idade</li>
+                                    <li>Dados de autenticação</li>
+                                    <li>Preferências alimentares e restrições dietéticas</li>
+                                </ul>
+
+                                <h2>2. COMO TRATAMOS SEUS DADOS?</h2>
+                                
+                                <div class="highlight">
+                                    <p><strong><em>Em resumo:</em></strong> <em>Tratamos seus dados para fornecer, melhorar e administrar nossos Serviços, comunicar com você, garantir segurança e cumprir obrigações legais brasileiras.</em></p>
+                                </div>
+                                
+                                <ul>
+                                    <li><strong>Criação e gestão de conta:</strong> Para que você possa criar, acessar e manter sua conta no Comboa funcionando adequadamente.</li>
+                                    <li><strong>Prestação dos serviços:</strong> Para fornecer as funcionalidades do aplicativo, incluindo receitas personalizadas, planos alimentares da ComboaIA e desafios semanais.</li>
+                                    <li><strong>Suporte ao usuário:</strong> Para responder suas dúvidas, resolver problemas técnicos e fornecer assistência.</li>
+                                    <li><strong>Processamento de pagamentos:</strong> Para processar assinaturas premium e compras no aplicativo.</li>
+                                </ul>
+
+                                <h2>3. QUAIS SÃO SEUS DIREITOS CONFORME A LGPD?</h2>
+                                
+                                <div class="lgpd-box">
+                                    <p><strong><em>Direitos do Titular (Art. 18 da LGPD):</em></strong> <em>Você possui direitos específicos sobre seus dados pessoais que podem ser exercidos a qualquer momento.</em></p>
+                                </div>
+                                
+                                <ul>
+                                    <li><strong>I - Confirmação e acesso:</strong> Confirmar se tratamos seus dados e obter acesso a eles</li>
+                                    <li><strong>II - Correção:</strong> Solicitar correção de dados incompletos, inexatos ou desatualizados</li>
+                                    <li><strong>III - Anonimização, bloqueio ou eliminação:</strong> Solicitar anonimização, bloqueio ou eliminação de dados desnecessários</li>
+                                    <li><strong>IV - Portabilidade:</strong> Solicitar portabilidade de dados a outro fornecedor</li>
+                                </ul>
+
+                                <h2>CONTATO</h2>
+                                
+                                <div class="contact-info">
+                                    <h4>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</h4>
+                                    <p><strong>Nome Fantasia:</strong> Gray Cat Corporation</p>
+                                    <p><strong>Endereço:</strong> AL SALVADOR, 1057 - TORRE AMÉRICA SALA 911 E 912</p>
+                                    <p><strong>Cidade:</strong> Salvador, Bahia - CEP: 41820-790</p>
+                                    <p><strong>País:</strong> Brasil</p>
+                                    <p><strong>Email para questões LGPD:</strong> suportebr@graycatcorp.com</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div id="info-collect" class="privacy-section">
-                            <h3>1. QUE INFORMAÇÕES COLETAMOS?</h3>
-                            
-                            <h4>Informações pessoais que você nos fornece</h4>
-                            <p><strong><em>Resumo:</em></strong> <em>Coletamos informações pessoais que você nos fornece voluntariamente.</em></p>
-                            
-                            <p>Coletamos informações pessoais que você nos fornece voluntariamente ao se registrar em nossos Serviços, demonstrar interesse em obter informações sobre nós ou nossos produtos e Serviços, participar de atividades nos Serviços ou entrar em contato conosco.</p>
-                            
-                            <p><strong>Informações pessoais fornecidas por você.</strong> As informações pessoais que coletamos podem incluir:</p>
-                            <ul>
-                                <li>Nomes</li>
-                                <li>Endereços de email</li>
-                                <li>Senhas</li>
-                                <li>Preferências de contato</li>
-                                <li>Endereços de cobrança</li>
-                                <li>Idade</li>
-                                <li>Dados de contato ou autenticação</li>
-                            </ul>
+                        <div id="terms-doc" class="document-viewer">
+                            <div class="document-header">
+                                <button class="back-button" onclick="hideDocument()">← Voltar</button>
+                                <div class="document-title">Termos de Uso</div>
+                            </div>
+                            <div class="document-content">
+                                <div class="highlight">
+                                    <p><strong>ATENÇÃO:</strong> Estes termos constituem um contrato legal vinculativo. Ao usar o aplicativo Comboa, você concorda em estar sujeito a todos os termos aqui estabelecidos.</p>
+                                </div>
 
-                            <h4>Dados de aplicativos</h4>
-                            <p>Se você usar nossos aplicativos, também podemos coletar as seguintes informações:</p>
-                            <ul>
-                                <li><em>Dados do dispositivo móvel:</em> Coletamos automaticamente informações do dispositivo (como ID do dispositivo móvel, modelo e fabricante), sistema operacional, informações de versão e configuração do sistema, números de identificação do dispositivo e aplicativo, tipo e versão do navegador, modelo de hardware, provedor de serviços de Internet e/ou operadora móvel e endereço IP (Internet Protocol).</li>
-                                <li><em>Notificações push:</em> Podemos solicitar o envio de notificações push sobre sua conta ou determinados recursos dos aplicativos. Se desejar optar por não receber esses tipos de comunicação, você pode desativá-los nas configurações do seu dispositivo.</li>
-                            </ul>
+                                <h2>1. IDENTIFICAÇÃO DA EMPRESA E ACEITAÇÃO DOS TERMOS</h2>
+                                
+                                <p>A <strong>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</strong>, empresa inscrita no CNPJ sob nº <strong>60.891.487/0001-71</strong>, com sede na AL SALVADOR, 1057, SALAS 911 E 912, SALVADOR, BAHIA, CEP 41820-790, doravante denominada <strong>"GRAY CAT CORPORATION"</strong>, é a responsável pelo aplicativo móvel <strong>Comboa</strong> e demais serviços relacionados.</p>
+
+                                <p>O <strong>Comboa</strong> é um aplicativo móvel de receitas fitness e estilo de vida saudável que oferece aos usuários uma extensa coleção de receitas saudáveis personalizadas, permitindo pesquisas com filtros por preferências alimentares, criação de planos de refeições através do assistente inteligente ComboaIA, participação em desafios semanais e manutenção de biblioteca pessoal de receitas favoritas.</p>
+
+                                <div class="warning-box">
+                                    <p><strong>IMPORTANTE:</strong> O aplicativo foca em bem-estar e culinária fitness, mas NÃO FORNECE orientação nutricional ou médica. Para questões de saúde, sempre consulte profissionais habilitados.</p>
+                                </div>
+
+                                <h2>2. CONDIÇÕES DE ELEGIBILIDADE E CADASTRO</h2>
+                                
+                                <p>Para utilizar o Comboa, você deve:</p>
+                                <ul>
+                                    <li>Ter <strong>18 anos completos</strong> ou mais</li>
+                                    <li>Possuir capacidade civil plena para celebrar contratos</li>
+                                    <li>Fornecer informações verdadeiras, precisas e atualizadas</li>
+                                    <li>Manter a confidencialidade de suas credenciais de acesso</li>
+                                    <li>Ser responsável por todas as atividades realizadas em sua conta</li>
+                                </ul>
+
+                                <h2>3. PROTEÇÃO DE DADOS PESSOAIS - LGPD</h2>
+                                
+                                <p>Em conformidade com a LGPD, informamos que:</p>
+                                
+                                <h3>Base Legal para Tratamento:</h3>
+                                <ul>
+                                    <li><strong>Execução de contrato:</strong> Para fornecimento dos serviços</li>
+                                    <li><strong>Consentimento:</strong> Para funcionalidades específicas e marketing</li>
+                                    <li><strong>Legítimo interesse:</strong> Para melhoria dos serviços e segurança</li>
+                                </ul>
+
+                                <h3>Seus Direitos como Titular:</h3>
+                                <ul>
+                                    <li>Confirmação da existência de tratamento</li>
+                                    <li>Acesso aos dados pessoais</li>
+                                    <li>Correção de dados incompletos, inexatos ou desatualizados</li>
+                                    <li>Anonimização, bloqueio ou eliminação</li>
+                                    <li>Portabilidade dos dados</li>
+                                    <li>Revogação do consentimento</li>
+                                </ul>
+
+                                <h2>CONTATO E ATENDIMENTO</h2>
+                                
+                                <div class="contact-info">
+                                    <h3>Suporte Técnico e Comercial:</h3>
+                                    <p><strong>E-mail:</strong> suportebr@graycatcorp.com<br>
+                                    <strong>Telefone:</strong> +55 (71) 98154-5276<br>
+                                    <strong>Horário:</strong> Segunda a sexta, 8h às 18h</p>
+
+                                    <h3>Endereço Comercial:</h3>
+                                    <p>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA<br>
+                                    AL SALVADOR, 1057, SALAS 911 E 912<br>
+                                    SALVADOR, BAHIA, CEP 41820-790<br>
+                                    CNPJ: 60.891.487/0001-71</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div id="info-use" class="privacy-section">
-                            <h3>2. COMO PROCESSAMOS SUAS INFORMAÇÕES?</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Processamos suas informações para fornecer, melhorar e administrar nossos Serviços, comunicar com você, para segurança e prevenção de fraudes, e para cumprir a lei.</em></p>
-                            
-                            <p><strong>Processamos suas informações pessoais por várias razões, dependendo de como você interage com nossos Serviços, incluindo:</strong></p>
-                            
-                            <ul>
-                                <li><strong>Para facilitar a criação e autenticação de contas e gerenciar contas de usuário.</strong> Podemos processar suas informações para que você possa criar e fazer login em sua conta, bem como manter sua conta em funcionamento.</li>
-                                <li><strong>Para fornecer e facilitar a entrega de serviços ao usuário.</strong> Podemos processar suas informações para fornecer o serviço solicitado.</li>
-                                <li><strong>Para responder a consultas de usuários/oferecer suporte aos usuários.</strong> Podemos processar suas informações para responder às suas consultas e resolver quaisquer problemas potenciais que você possa ter com o serviço solicitado.</li>
-                                <li><strong>Para cumprir e gerenciar seus pedidos.</strong> Podemos processar suas informações para cumprir e gerenciar seus pedidos, pagamentos, devoluções e trocas feitas através dos Serviços.</li>
-                                <li><strong>Para enviar comunicações de marketing e promocionais.</strong> Podemos processar as informações pessoais que você nos envia para nossos fins de marketing, se estiver de acordo com suas preferências de marketing.</li>
-                                <li><strong>Para proteger nossos Serviços.</strong> Podemos processar suas informações como parte de nossos esforços para manter nossos Serviços seguros e protegidos, incluindo monitoramento e prevenção de fraudes.</li>
-                                <li><strong>Para identificar tendências de uso.</strong> Podemos processar informações sobre como você usa nossos Serviços para entender melhor como eles estão sendo usados para que possamos melhorá-los.</li>
-                            </ul>
-                        </div>
+                        <div id="eula-doc" class="document-viewer">
+                            <div class="document-header">
+                                <button class="back-button" onclick="hideDocument()">← Voltar</button>
+                                <div class="document-title">EULA - Contrato de Licença do Usuário Final (Comboa)</div>
+                            </div>
+                            <div class="document-content">
+                                <div class="brazilian-law">
+                                    <p><strong>CONFORMIDADE COM A LEGISLAÇÃO BRASILEIRA:</strong> Este contrato está em conformidade com o Código de Defesa do Consumidor (Lei nº 8.078/90), Marco Civil da Internet (Lei nº 12.965/14), Lei de Software (Lei nº 9.609/98) e demais normas aplicáveis da legislação brasileira.</p>
+                                </div>
 
-                        <div id="legal-bases" class="privacy-section">
-                            <h3>3. BASES LEGAIS PARA PROCESSAMENTO</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Só processamos suas informações pessoais quando acreditamos que é necessário e temos uma razão legal válida para fazê-lo sob a lei aplicável.</em></p>
-                            
-                            <p>Podemos confiar nas seguintes bases legais para processar suas informações pessoais:</p>
-                            <ul>
-                                <li><strong>Consentimento.</strong> Podemos processar suas informações se você nos deu permissão (consentimento) para usar suas informações pessoais para uma finalidade específica.</li>
-                                <li><strong>Execução de um Contrato.</strong> Podemos processar suas informações pessoais quando acreditamos que é necessário para cumprir nossas obrigações contratuais com você.</li>
-                                <li><strong>Interesses Legítimos.</strong> Podemos processar suas informações quando acreditamos que é razoavelmente necessário para alcançar nossos interesses comerciais legítimos.</li>
-                                <li><strong>Obrigações Legais.</strong> Podemos processar suas informações onde acreditamos que é necessário para o cumprimento de nossas obrigações legais.</li>
-                            </ul>
-                        </div>
+                                <h2>1. O APLICATIVO</h2>
+                                
+                                <p>O <strong>Comboa</strong> ("Aplicativo Licenciado") é um software desenvolvido para funcionar como aplicativo móvel de receitas fitness e estilo de vida saudável que fornece aos usuários uma vasta coleção de receitas saudáveis personalizadas, customizado para dispositivos móveis iOS e Android ("Dispositivos").</p>
+                                
+                                <p>O aplicativo permite que os usuários:</p>
+                                <ul>
+                                    <li>Pesquisem receitas filtrando por preferências e restrições alimentares (vegano, vegetariano, sem lactose, sem glúten)</li>
+                                    <li>Criem planos de refeições personalizados através do assistente inteligente ComboaIA</li>
+                                    <li>Participem de desafios semanais de alimentação saudável</li>
+                                    <li>Acompanhem conquistas e progresso</li>
+                                    <li>Mantenham uma biblioteca pessoal de receitas favoritas</li>
+                                </ul>
 
-                        <div id="info-share" class="privacy-section">
-                            <h3>4. QUANDO E COM QUEM COMPARTILHAMOS INFORMAÇÕES?</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Podemos compartilhar informações em situações específicas e com terceiros específicos.</em></p>
-                            
-                            <p><strong>Fornecedores, Consultores e Outros Prestadores de Serviços Terceirizados.</strong> Podemos compartilhar seus dados com fornecedores terceirizados, prestadores de serviços, contratados ou agentes que prestam serviços para nós ou em nosso nome.</p>
-                            
-                            <p>As categorias de terceiros com quem podemos compartilhar informações pessoais incluem:</p>
-                            <ul>
-                                <li>Redes de anúncios</li>
-                                <li>Serviços de computação em nuvem</li>
-                                <li>Serviços de análise de dados</li>
-                                <li>Processadores de pagamento</li>
-                                <li>Ferramentas de vendas e marketing</li>
-                                <li>Redes sociais</li>
-                                <li>Provedores de hospedagem de sites</li>
-                            </ul>
-                        </div>
+                                <div class="disclaimer-box">
+                                    <p><strong>IMPORTANTE:</strong> O aplicativo foca em bem-estar, culinária fitness e motivação para manter hábitos alimentares saudáveis, <strong>SEM FORNECER ORIENTAÇÃO NUTRICIONAL OU MÉDICA</strong>. Consulte sempre profissionais qualificados para orientações de saúde e nutrição.</p>
+                                </div>
 
-                        <div id="info-retention" class="privacy-section">
-                            <h3>5. POR QUANTO TEMPO MANTEMOS SUAS INFORMAÇÕES?</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Mantemos suas informações pelo tempo necessário para cumprir os propósitos descritos nesta Política de Privacidade, a menos que exigido de outra forma por lei.</em></p>
-                            
-                            <p>Manteremos suas informações pessoais apenas pelo tempo necessário para os propósitos estabelecidos nesta Política de Privacidade. Nenhum propósito neste aviso exigirá que mantenhamos suas informações pessoais por mais de três (3) meses após o encerramento da conta do usuário.</p>
-                        </div>
+                                <h2>2. ESCOPO DA LICENÇA</h2>
+                                
+                                <h3>2.1 Natureza da Licença</h3>
+                                <p>Você recebe uma licença <strong>não transferível, não exclusiva e não sublicenciável</strong> para instalar e usar o Aplicativo Licenciado em Dispositivos que Você possua ou controle, conforme permitido pelas regras das lojas de aplicativos.</p>
 
-                        <div id="info-safety" class="privacy-section">
-                            <h3>6. COMO MANTEMOS SUAS INFORMAÇÕES SEGURAS?</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Visamos proteger suas informações pessoais através de um sistema de medidas de segurança organizacionais e técnicas.</em></p>
-                            
-                            <p>Implementamos medidas de segurança técnicas e organizacionais apropriadas e razoáveis, projetadas para proteger a segurança de qualquer informação pessoal que processamos. No entanto, apesar de nossas salvaguardas e esforços para proteger suas informações, nenhuma transmissão eletrônica pela Internet ou tecnologia de armazenamento de informações pode ser garantida como 100% segura.</p>
-                        </div>
+                                <h3>2.2 Proibição de Engenharia Reversa</h3>
+                                <p>É <strong>expressamente proibido</strong> fazer engenharia reversa, traduzir, desmontar, integrar, descompilar, remover, modificar, combinar, criar obras derivadas ou atualizações, adaptar, ou tentar derivar o código-fonte do Aplicativo Licenciado, exceto com consentimento prévio por escrito da Licenciadora.</p>
 
-                        <div id="privacy-rights" class="privacy-section">
-                            <h3>7. QUAIS SÃO SEUS DIREITOS DE PRIVACIDADE?</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Em algumas regiões, você tem direitos que lhe permitem maior acesso e controle sobre suas informações pessoais.</em></p>
-                            
-                            <p>Em algumas regiões, você tem certos direitos sob as leis de proteção de dados aplicáveis. Estes podem incluir o direito de:</p>
-                            <ul>
-                                <li>Solicitar acesso e obter uma cópia de suas informações pessoais</li>
-                                <li>Solicitar retificação ou apagamento</li>
-                                <li>Restringir o processamento de suas informações pessoais</li>
-                                <li>Portabilidade de dados (se aplicável)</li>
-                                <li>Não estar sujeito à tomada de decisão automatizada</li>
-                            </ul>
+                                <h2>3. MANUTENÇÃO E SUPORTE</h2>
+                                
+                                <h3>3.1 Responsabilidade da Licenciadora</h3>
+                                <p>A <strong>Licenciadora é exclusivamente responsável</strong> por fornecer serviços de manutenção e suporte para este Aplicativo Licenciado. Entre em contato através do email <strong>suportebr@graycatcorp.com</strong>.</p>
 
-                            <h4>Informações da conta</h4>
-                            <p>Se você gostaria de revisar ou alterar as informações em sua conta ou encerrar sua conta, você pode:</p>
-                            <ul>
-                                <li>Fazer login nas configurações de sua conta e atualizar sua conta de usuário</li>
-                                <li>Através da página de configurações dentro do aplicativo</li>
-                            </ul>
-                        </div>
+                                <h2>4. GARANTIAS</h2>
+                                
+                                <h3>4.1 Garantia de Segurança</h3>
+                                <p>A Licenciadora garante que o Aplicativo está livre de spyware, cavalos de Tróia, vírus ou qualquer malware no momento do download, e que funciona conforme descrito na documentação.</p>
 
-                        <div id="minors" class="privacy-section">
-                            <h3>8. COLETAMOS INFORMAÇÕES DE MENORES?</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Não coletamos dados ou fazemos marketing para crianças menores de 18 anos de idade.</em></p>
-                            
-                            <p>Não coletamos, solicitamos dados ou fazemos marketing para crianças menores de 18 anos de idade, nem vendemos conscientemente essas informações pessoais. Ao usar os Serviços, você declara que tem pelo menos 18 anos.</p>
-                        </div>
+                                <div class="brazilian-law">
+                                    <p><strong>Garantia Legal (CDC):</strong> Além das garantias contratuais, aplicam-se as garantias legais previstas no Código de Defesa do Consumidor: 30 dias para produtos não duráveis e 90 dias para produtos duráveis, contados da entrega.</p>
+                                </div>
 
-                        <div id="policy-updates" class="privacy-section">
-                            <h3>9. FAZEMOS ATUALIZAÇÕES NESTA POLÍTICA?</h3>
-                            
-                            <p><strong><em>Resumo:</em></strong> <em>Sim, atualizaremos esta política conforme necessário para permanecer em conformidade com as leis relevantes.</em></p>
-                            
-                            <p>Podemos atualizar esta Política de Privacidade de tempos em tempos. A versão atualizada será indicada por uma data "Revisada" atualizada no topo desta Política de Privacidade. Recomendamos que você revise esta Política de Privacidade com frequência para se manter informado sobre como estamos protegendo suas informações.</p>
-                        </div>
-
-                        <div id="contact" class="privacy-section">
-                            <h3>10. COMO ENTRAR EM CONTATO CONOSCO?</h3>
-                            
-                            <p>Se você tiver dúvidas ou comentários sobre esta política, você pode nos enviar um email para <strong>suportebr@graycatcorp.com</strong> ou entrar em contato por correio em:</p>
-                            
-                            <div class="contact-info">
-                                <h4>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</h4>
-                                <p>AL SALVADOR, 1057</p>
-                                <p>TORRE AMÉRICA SALA 911 E 912</p>
-                                <p>SALVADOR, BAHIA 41820790</p>
-                                <p>Brazil</p>
-                                <p><strong>Email:</strong> suportebr@graycatcorp.com</p>
+                                <h2>INFORMAÇÕES DE CONTATO</h2>
+                                
+                                <div class="contact-info">
+                                    <h4>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</h4>
+                                    <p><strong>Responsável:</strong> Diego Branco</p>
+                                    <p><strong>Endereço:</strong> AL SALVADOR, 1057, SALAS 911 E 912</p>
+                                    <p><strong>Cidade:</strong> Salvador, Bahia - CEP: 41820-790</p>
+                                    <p><strong>País:</strong> Brasil</p>
+                                    <p><strong>CNPJ:</strong> 60.891.487/0001-71</p>
+                                    <br>
+                                    <p><strong>Email de Suporte:</strong> suportebr@graycatcorp.com</p>
+                                    <p><strong>Horário de Atendimento:</strong> Segunda a sexta, 9h às 18h (horário de Brasília)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -876,7 +991,7 @@
                     <a href="#about" onclick="showSection('about')">Sobre</a>
                     <a href="#services" onclick="showSection('services')">Serviços</a>
                     <a href="#contact" onclick="showSection('contact')">Contato</a>
-                    <a href="#privacy" onclick="showSection('privacy')">Privacidade</a>
+                    <a href="#legal" onclick="showSection('legal')">Documentos Legais</a>
                 </div>
                 <div class="copyright">
                     <p>&copy; 2025 Gray Cat Corporation. Todos os direitos reservados.</p>
@@ -892,6 +1007,9 @@
             sections.forEach(section => {
                 section.classList.add('hidden');
             });
+            
+            // Hide any open documents
+            hideDocument();
             
             // Show target section
             const targetSection = document.getElementById(sectionId);
@@ -914,6 +1032,33 @@
             
             // Smooth scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showDocument(docType) {
+            // Hide documents list
+            document.getElementById('documents-list').style.display = 'none';
+            
+            // Show specific document
+            const docId = docType + '-doc';
+            const docViewer = document.getElementById(docId);
+            if (docViewer) {
+                docViewer.classList.add('active');
+                docViewer.scrollTop = 0;
+            }
+        }
+
+        function hideDocument() {
+            // Hide all document viewers
+            const viewers = document.querySelectorAll('.document-viewer');
+            viewers.forEach(viewer => {
+                viewer.classList.remove('active');
+            });
+            
+            // Show documents list
+            const docsList = document.getElementById('documents-list');
+            if (docsList) {
+                docsList.style.display = 'grid';
+            }
         }
 
         // Initialize on page load
