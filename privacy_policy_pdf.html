@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Gray Cat Corporation</title>
+    <style>
+        @media print {
+            @page {
+                margin: 2cm;
+                size: A4;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #fff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #333;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .last-updated {
+            font-size: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .company-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid #333;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .toc h2 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .toc ol {
+            list-style: decimal;
+            padding-left: 1.5rem;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .summary h2 {
+            color: #000;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section {
+            margin: 3rem 0;
+            page-break-inside: avoid;
+        }
+
+        .section h2 {
+            color: #000;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
+            page-break-after: avoid;
+        }
+
+        .section h3 {
+            color: #222;
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            page-break-after: avoid;
+        }
+
+        .section h4 {
+            color: #444;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+            page-break-after: avoid;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            orphans: 3;
+            widows: 3;
+        }
+
+        .section ul, .section ol {
+            margin: 1rem 0 1.5rem 2rem;
+            orphans: 3;
+            widows: 3;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        .lgpd-box {
+            background: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #000;
+        }
+
+        em {
+            font-style: italic;
+            color: #555;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 1.5rem 0;
+        }
+
+        .contact-info h4 {
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        .brazilian-law {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:after {
+            content: "";
+        }
+
+        .internal-link {
+            color: #666;
+            font-style: italic;
+        }
+
+        .internal-link:before {
+            content: "(ver seção ";
+        }
+
+        .internal-link:after {
+            content: ")";
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>POLÍTICA DE PRIVACIDADE</h1>
+        <p class="last-updated">Última atualização: 25 de julho de 2025</p>
+    </div>
+
+    <div class="company-info">
+        <p>Esta Política de Privacidade para <strong>D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</strong> (operando como <strong>GRAY CAT CORPORATION</strong>) ("<strong>nós</strong>," "<strong>nos</strong>," ou "<strong>nossa</strong>"), descreve como e por que podemos acessar, coletar, armazenar, usar e/ou compartilhar ("<strong>tratar</strong>") suas informações pessoais quando você usa nossos serviços ("<strong>Serviços</strong>"), incluindo quando você:</p>
+
+        <ul>
+            <li>Baixa e usa nosso aplicativo móvel (<strong>Comboa</strong>), ou qualquer outro aplicativo nosso que se vincula a esta Política de Privacidade</li>
+            <li>Usa o <strong>Comboa</strong>. Um aplicativo móvel de receitas fitness e estilo de vida saudável que fornece aos usuários uma vasta coleção de receitas saudáveis personalizadas. O Comboa permite aos usuários pesquisar receitas filtrando por preferências e restrições alimentares (vegano, vegetariano, sem lactose, sem glúten), criar planos de refeições personalizados através do assistente inteligente ComboaIA, participar de desafios semanais de alimentação saudável, acompanhar conquistas e manter uma biblioteca pessoal de receitas favoritas. O aplicativo foca em bem-estar, culinária fitness e motivação para manter hábitos alimentares saudáveis, sem fornecer orientação nutricional ou médica.</li>
+            <li>Interage conosco de outras formas relacionadas, incluindo vendas, marketing ou eventos</li>
+        </ul>
+
+        <p><strong>Dúvidas ou preocupações?</strong> A leitura desta Política de Privacidade ajudará você a entender seus direitos de privacidade e escolhas. Somos responsáveis por tomar decisões sobre como suas informações pessoais são tratadas. Se você não concorda com nossas políticas e práticas, por favor não use nossos Serviços. Se ainda tiver dúvidas ou preocupações, entre em contato conosco em <strong>suportebr@graycatcorp.com</strong>.</p>
+    </div>
+
+    <div class="lgpd-box">
+        <p><strong>CONFORMIDADE COM A LGPD:</strong> Esta política está em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018) e demais legislações brasileiras aplicáveis, incluindo o Código de Defesa do Consumidor e o Marco Civil da Internet.</p>
+    </div>
+
+    <div class="summary">
+        <h2>RESUMO DOS PONTOS PRINCIPAIS</h2>
+        
+        <p><strong><em>Este resumo fornece pontos-chave da nossa Política de Privacidade, mas você pode encontrar mais detalhes sobre qualquer um desses tópicos consultando as seções específicas abaixo.</em></strong></p>
+        
+        <p><strong>Que dados pessoais tratamos?</strong> Quando você visita, usa ou navega em nossos Serviços, podemos tratar dados pessoais dependendo de como você interage conosco e com os Serviços, as escolhas que você faz e os produtos e recursos que você usa.</p>
+        
+        <p><strong>Tratamos dados pessoais sensíveis?</strong> Não tratamos dados pessoais sensíveis conforme definido pela LGPD.</p>
+        
+        <p><strong>Coletamos dados de terceiros?</strong> Não coletamos dados de terceiros.</p>
+        
+        <p><strong>Como tratamos seus dados?</strong> Tratamos seus dados para fornecer, melhorar e administrar nossos Serviços, comunicar com você, para segurança e prevenção de fraudes, e para cumprir a lei brasileira. Também podemos tratar seus dados para outros propósitos com seu consentimento.</p>
+        
+        <p><strong>Em que situações compartilhamos dados pessoais?</strong> Podemos compartilhar dados em situações específicas e com categorias específicas de terceiros, sempre respeitando a LGPD.</p>
+        
+        <p><strong>Como mantemos seus dados seguros?</strong> Temos processos e procedimentos organizacionais e técnicos adequados para proteger seus dados pessoais, conforme exigido pela legislação brasileira.</p>
+        
+        <p><strong>Quais são seus direitos?</strong> Conforme a LGPD, você tem direitos específicos em relação aos seus dados pessoais, incluindo acesso, correção, exclusão e portabilidade.</p>
+    </div>
+
+    <div class="toc">
+        <h2>ÍNDICE</h2>
+        <ol>
+            <li>QUE DADOS COLETAMOS?</li>
+            <li>COMO TRATAMOS SEUS DADOS?</li>
+            <li>QUAIS AS BASES LEGAIS PARA O TRATAMENTO DOS SEUS DADOS?</li>
+            <li>QUANDO E COM QUEM COMPARTILHAMOS SEUS DADOS PESSOAIS?</li>
+            <li>QUAL É NOSSA POSIÇÃO SOBRE SITES DE TERCEIROS?</li>
+            <li>USAMOS COOKIES E OUTRAS TECNOLOGIAS DE RASTREAMENTO?</li>
+            <li>COMO LIDAMOS COM SEUS LOGINS SOCIAIS?</li>
+            <li>POR QUANTO TEMPO MANTEMOS SEUS DADOS?</li>
+            <li>COMO MANTEMOS SEUS DADOS SEGUROS?</li>
+            <li>COLETAMOS DADOS DE CRIANÇAS E ADOLESCENTES?</li>
+            <li>QUAIS SÃO SEUS DIREITOS CONFORME A LGPD?</li>
+            <li>CONTROLES PARA RECURSOS DE NÃO RASTREAMENTO</li>
+            <li>FAZEMOS ATUALIZAÇÕES NESTA POLÍTICA?</li>
+            <li>COMO VOCÊ PODE ENTRAR EM CONTATO CONOSCO?</li>
+            <li>COMO EXERCER SEUS DIREITOS SOBRE OS DADOS?</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>1. QUE DADOS COLETAMOS?</h2>
+        
+        <h3>Dados pessoais que você nos fornece</h3>
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Coletamos dados pessoais que você nos fornece voluntariamente.</em></p>
+        </div>
+        
+        <p>Coletamos dados pessoais que você fornece voluntariamente quando se registra nos Serviços, expressa interesse em obter informações sobre nós ou nossos produtos e Serviços, quando participa de atividades nos Serviços, ou quando entra em contato conosco.</p>
+        
+        <h4>Dados Pessoais Fornecidos por Você</h4>
+        <p>Os dados pessoais que coletamos dependem do contexto de suas interações conosco e com os Serviços, as escolhas que você faz e os produtos e recursos que você usa. Os dados pessoais que coletamos podem incluir:</p>
+        
+        <ul>
+            <li>Nome completo</li>
+            <li>Endereços de e-mail</li>
+            <li>Senhas (criptografadas)</li>
+            <li>Preferências de contato e comunicação</li>
+            <li>Dados de faturamento</li>
+            <li>Informações de pagamento (processadas por terceiros)</li>
+            <li>Idade</li>
+            <li>Dados de autenticação</li>
+            <li>Preferências alimentares e restrições dietéticas</li>
+        </ul>
+
+        <h4>Dados Sensíveis</h4>
+        <div class="brazilian-law">
+            <p><strong>Conformidade LGPD:</strong> Não coletamos ou tratamos dados pessoais sensíveis conforme definido no Art. 5º, II da Lei 13.709/2018 (LGPD), incluindo origem racial ou étnica, convicção religiosa, opinião política, dados genéticos, biométricos ou sobre saúde.</p>
+        </div>
+
+        <h4>Dados de Pagamento</h4>
+        <p>Para processar pagamentos, coletamos dados necessários como informações do cartão de pagamento. <strong>Importante:</strong> Todos os dados de pagamento são processados e armazenados pelos processadores certificados <strong>Google Play Store</strong> e <strong>Apple App Store</strong>, que possuem certificação PCI DSS. Não armazenamos dados completos de cartão de crédito em nossos servidores.</p>
+
+        <h4>Dados de Login Social</h4>
+        <p>Oferecemos a opção de registro usando contas de redes sociais (Facebook, Google, etc.). Quando você utiliza esta opção, coletamos apenas as informações básicas de perfil disponibilizadas pela rede social conforme suas configurações de privacidade.</p>
+
+        <h4>Dados do Aplicativo Móvel</h4>
+        <p>Se você usar nossos aplicativos, coletamos automaticamente:</p>
+        
+        <ul>
+            <li><strong>Dados do Dispositivo:</strong> Identificador único do dispositivo, modelo, sistema operacional, versão do app, configurações de idioma, endereço IP e informações sobre sua operadora móvel.</li>
+            <li><strong>Notificações Push:</strong> Com seu consentimento, enviamos notificações sobre recursos do app. Você pode desativar a qualquer momento nas configurações do dispositivo.</li>
+            <li><strong>Dados de Uso:</strong> Como você interage com o aplicativo, funcionalidades utilizadas, tempo de uso e frequência de acesso.</li>
+        </ul>
+
+        <h3>Dados coletados automaticamente</h3>
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Coletamos automaticamente certas informações técnicas quando você usa nossos Serviços para garantir funcionamento adequado e segurança.</em></p>
+        </div>
+        
+        <p>Coletamos automaticamente dados quando você visita, usa ou navega pelos Serviços. Estes dados não revelam sua identidade específica, mas incluem informações técnicas necessárias para o funcionamento dos Serviços, como dados de log, informações de dispositivo e métricas de uso.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. COMO TRATAMOS SEUS DADOS?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Tratamos seus dados para fornecer, melhorar e administrar nossos Serviços, comunicar com você, garantir segurança e cumprir obrigações legais brasileiras.</em></p>
+        </div>
+        
+        <p>Tratamos seus dados pessoais para as seguintes finalidades, sempre respeitando os princípios da LGPD:</p>
+        
+        <ul>
+            <li><strong>Criação e gestão de conta:</strong> Para que você possa criar, acessar e manter sua conta no Comboa funcionando adequadamente.</li>
+            <li><strong>Prestação dos serviços:</strong> Para fornecer as funcionalidades do aplicativo, incluindo receitas personalizadas, planos alimentares da ComboaIA e desafios semanais.</li>
+            <li><strong>Suporte ao usuário:</strong> Para responder suas dúvidas, resolver problemas técnicos e fornecer assistência.</li>
+            <li><strong>Processamento de pagamentos:</strong> Para processar assinaturas premium e compras no aplicativo.</li>
+            <li><strong>Comunicação:</strong> Para enviar notificações importantes sobre o serviço, atualizações de políticas e, com seu consentimento, comunicações promocionais.</li>
+            <li><strong>Personalização:</strong> Para adaptar o conteúdo às suas preferências alimentares e dietéticas.</li>
+            <li><strong>Segurança:</strong> Para proteger nossos Serviços, prevenir fraudes e garantir a segurança dos usuários.</li>
+            <li><strong>Melhorias:</strong> Para analisar como o aplicativo é usado e implementar melhorias nas funcionalidades.</li>
+            <li><strong>Cumprimento legal:</strong> Para cumprir obrigações legais conforme a legislação brasileira.</li>
+        </ul>
+    </div>
+
+    <div class="section page-break">
+        <h2>3. QUAIS AS BASES LEGAIS PARA O TRATAMENTO DOS SEUS DADOS?</h2>
+        
+        <div class="lgpd-box">
+            <p><strong><em>Conforme a LGPD:</em></strong> <em>Só tratamos seus dados pessoais quando temos uma base legal válida conforme o Art. 7º da Lei 13.709/2018.</em></p>
+        </div>
+        
+        <p>Conforme exigido pela Lei Geral de Proteção de Dados (LGPD), nosso tratamento de dados pessoais se baseia nas seguintes hipóteses legais:</p>
+        
+        <ul>
+            <li><strong>Consentimento do titular (Art. 7º, I):</strong> Para funcionalidades opcionais como notificações push, comunicações promocionais e uso de dados para personalização avançada. Você pode retirar seu consentimento a qualquer momento.</li>
+            
+            <li><strong>Execução de contrato (Art. 7º, V):</strong> Para fornecimento dos serviços do Comboa, processamento de pagamentos e cumprimento de obrigações contratuais com o usuário.</li>
+            
+            <li><strong>Legítimo interesse (Art. 7º, IX):</strong> Para:
+                <ul>
+                    <li>Análise de uso para melhorar os Serviços</li>
+                    <li>Medidas de segurança e prevenção a fraudes</li>
+                    <li>Comunicações essenciais sobre o serviço</li>
+                    <li>Desenvolvimento de novas funcionalidades</li>
+                </ul>
+            </li>
+            
+            <li><strong>Cumprimento de obrigação legal (Art. 7º, II):</strong> Para atender exigências de órgãos fiscalizadores, autoridades judiciárias ou administrativas.</li>
+            
+            <li><strong>Proteção da vida (Art. 7º, III):</strong> Em situações excepcionais onde seja necessário para proteger a vida ou a integridade física do titular ou de terceiros.</li>
+        </ul>
+
+        <div class="brazilian-law">
+            <p><strong>Importante:</strong> Sempre que o tratamento se basear em legítimo interesse, realizamos o teste de balanceamento conforme orientações da ANPD, garantindo que nossos interesses não se sobreponham aos direitos e liberdades fundamentais do titular.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. QUANDO E COM QUEM COMPARTILHAMOS SEUS DADOS PESSOAIS?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Compartilhamos dados apenas nas situações específicas descritas nesta seção, sempre respeitando a LGPD e suas finalidades.</em></p>
+        </div>
+        
+        <h3>Operadores de Dados e Prestadores de Serviços</h3>
+        <p>Conforme o Art. 5º, VIII da LGPD, compartilhamos dados com <strong>operadores</strong> (terceiros que tratam dados em nosso nome) que nos ajudam a prestar os Serviços. Todos possuem contratos de operação que garantem:</p>
+        <ul>
+            <li>Tratamento apenas conforme nossas instruções</li>
+            <li>Implementação de medidas de segurança adequadas</li>
+            <li>Não utilização dos dados para finalidades próprias</li>
+            <li>Exclusão dos dados ao fim do contrato</li>
+        </ul>
+        
+        <p>Categorias de operadores com quem compartilhamos dados:</p>
+        <ul>
+            <li><strong>Provedores de infraestrutura em nuvem:</strong> Para hospedagem segura dos dados</li>
+            <li><strong>Processadores de pagamento:</strong> Google Play Store e Apple App Store para assinaturas</li>
+            <li><strong>Serviços de análise:</strong> Para métricas agregadas e anônimas de uso</li>
+            <li><strong>Provedores de notificação:</strong> Para envio de notificações push</li>
+            <li><strong>Suporte técnico:</strong> Para resolução de problemas e atendimento</li>
+        </ul>
+        
+        <h3>Outras Situações de Compartilhamento</h3>
+        <ul>
+            <li><strong>Transferência de controle societário:</strong> Em caso de fusão, aquisição ou venda de ativos, sempre notificando os titulares previamente.</li>
+            <li><strong>Cumprimento de obrigações legais:</strong> Quando exigido por autoridades competentes ou para cumprimento de determinações judiciais.</li>
+            <li><strong>Proteção de direitos:</strong> Para exercer ou defender direitos em procedimentos administrativos ou judiciais.</li>
+        </ul>
+
+        <div class="brazilian-law">
+            <p><strong>Transferência Internacional:</strong> Caso seja necessário transferir dados para fora do Brasil, seguiremos rigorosamente as exigências dos Arts. 33 a 36 da LGPD, incluindo garantias de proteção adequada e, quando necessário, seu consentimento específico.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. QUAL É NOSSA POSIÇÃO SOBRE SITES DE TERCEIROS?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Não somos responsáveis pelas práticas de privacidade de sites ou serviços de terceiros vinculados aos nossos Serviços.</em></p>
+        </div>
+        
+        <p>Os Serviços podem conter links para sites, aplicativos ou serviços de terceiros. Esta Política de Privacidade não se aplica a esses terceiros. Recomendamos que você leia as políticas de privacidade de qualquer terceiro antes de fornecer seus dados pessoais.</p>
+        
+        <p>Não nos responsabilizamos pelas práticas de tratamento de dados de terceiros, mesmo que você acesse seus serviços através de links em nossos Serviços.</p>
+    </div>
+
+    <div class="section">
+        <h2>6. USAMOS COOKIES E OUTRAS TECNOLOGIAS DE RASTREAMENTO?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Utilizamos cookies e tecnologias similares para melhorar sua experiência e funcionamento dos Serviços, sempre respeitando sua privacidade.</em></p>
+        </div>
+        
+        <p>Utilizamos cookies, pixels e tecnologias similares para:</p>
+        <ul>
+            <li>Manter você logado no aplicativo</li>
+            <li>Lembrar suas preferências alimentares</li>
+            <li>Analisar o uso dos Serviços (dados agregados e anônimos)</li>
+            <li>Garantir a segurança da plataforma</li>
+            <li>Personalizar conteúdo e funcionalidades</li>
+        </ul>
+
+        <div class="brazilian-law">
+            <p><strong>Conformidade com o Marco Civil:</strong> O uso de cookies segue as diretrizes do Marco Civil da Internet (Lei 12.965/2014) e você pode gerenciar suas preferências através das configurações do seu navegador ou dispositivo.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>7. COMO LIDAMOS COM SEUS LOGINS SOCIAIS?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Se você usar login social, coletamos apenas informações básicas necessárias para criação da conta.</em></p>
+        </div>
+        
+        <p>Quando você utiliza login social (Facebook, Google, etc.), coletamos apenas:</p>
+        <ul>
+            <li>Nome público</li>
+            <li>Endereço de e-mail</li>
+            <li>Foto de perfil (se disponível)</li>
+            <li>Identificador único da plataforma</li>
+        </ul>
+        
+        <p>Não acessamos nem coletamos outros dados da sua conta social, como lista de amigos, posts ou informações privadas. Você continua controlando essas informações diretamente na plataforma social.</p>
+    </div>
+
+    <div class="section">
+        <h2>8. POR QUANTO TEMPO MANTEMOS SEUS DADOS?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Mantemos seus dados apenas pelo tempo necessário para as finalidades estabelecidas ou conforme exigido pela legislação brasileira.</em></p>
+        </div>
+        
+        <p>Seguimos o princípio da necessidade conforme o Art. 6º, III da LGPD. Os períodos de retenção são:</p>
+        
+        <ul>
+            <li><strong>Dados de conta ativa:</strong> Enquanto sua conta estiver ativa e por até 6 meses após inatividade</li>
+            <li><strong>Dados de conta encerrada:</strong> Até 30 dias após solicitação de exclusão (salvo obrigações legais)</li>
+            <li><strong>Dados de pagamento:</strong> Conforme exigências fiscais brasileiras (até 5 anos)</li>
+            <li><strong>Logs de segurança:</strong> Até 6 meses para investigação de incidentes</li>
+            <li><strong>Dados para cumprimento legal:</strong> Conforme determinação de autoridade competente</li>
+        </ul>
+
+        <div class="brazilian-law">
+            <p><strong>Eliminação:</strong> Após o período de retenção, realizamos a eliminação segura dos dados conforme Art. 16 da LGPD, garantindo que não possam ser recuperados ou utilizados.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>9. COMO MANTEMOS SEUS DADOS SEGUROS?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Implementamos medidas técnicas e organizacionais adequadas para proteger seus dados pessoais conforme a LGPD.</em></p>
+        </div>
+        
+        <p>Adotamos medidas de segurança técnicas e organizacionais conforme Art. 46 da LGPD:</p>
+        
+        <h4>Medidas Técnicas:</h4>
+        <ul>
+            <li>Criptografia de dados em trânsito e em repouso</li>
+            <li>Controles de acesso com autenticação multifator</li>
+            <li>Monitoramento contínuo de segurança</li>
+            <li>Backups seguros e regulares</li>
+            <li>Testes regulares de segurança</li>
+        </ul>
+
+        <h4>Medidas Organizacionais:</h4>
+        <ul>
+            <li>Treinamento da equipe em proteção de dados</li>
+            <li>Políticas internas de segurança da informação</li>
+            <li>Procedimentos de resposta a incidentes</li>
+            <li>Controles de acesso baseados na necessidade</li>
+            <li>Auditorias periódicas de segurança</li>
+        </ul>
+
+        <div class="lgpd-box">
+            <p><strong>Notificação de Incidentes:</strong> Conforme Art. 48 da LGPD, em caso de incidente de segurança que possa acarretar risco aos seus direitos e liberdades, notificaremos a ANPD e, quando necessário, os titulares afetados no prazo legal.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>10. COLETAMOS DADOS DE CRIANÇAS E ADOLESCENTES?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Seguimos rigorosamente as regras da LGPD para proteção de crianças e adolescentes menores de 18 anos.</em></p>
+        </div>
+
+        <div class="lgpd-box">
+            <p><strong>Proteção do Menor (Art. 14 da LGPD):</strong> O tratamento de dados pessoais de crianças e adolescentes deve ser realizado com o consentimento específico de pelo menos um dos pais ou responsável legal, sempre considerando o melhor interesse da criança.</p>
+        </div>
+        
+        <p>Nossa política para menores de 18 anos:</p>
+        <ul>
+            <li><strong>Menores de 13 anos:</strong> Não coletamos conscientemente dados desta faixa etária</li>
+            <li><strong>Entre 13 e 18 anos:</strong> Exigimos consentimento dos pais ou responsáveis conforme LGPD</li>
+            <li><strong>Verificação:</strong> Implementamos mecanismos para verificar a idade durante o cadastro</li>
+            <li><strong>Exclusão:</strong> Se identificarmos dados de menores coletados sem consentimento adequado, excluiremos imediatamente</li>
+        </ul>
+        
+        <p>Se você é pai, mãe ou responsável e tem conhecimento de que seu filho forneceu dados pessoais sem o consentimento adequado, entre em contato conosco em <strong>suportebr@graycatcorp.com</strong>.</p>
+    </div>
+
+    <div class="section page-break">
+        <h2>11. QUAIS SÃO SEUS DIREITOS CONFORME A LGPD?</h2>
+        
+        <div class="lgpd-box">
+            <p><strong><em>Direitos do Titular (Art. 18 da LGPD):</em></strong> <em>Você possui direitos específicos sobre seus dados pessoais que podem ser exercidos a qualquer momento.</em></p>
+        </div>
+        
+        <p>Conforme o Art. 18 da LGPD, você tem os seguintes direitos:</p>
+        
+        <h3>Direitos Principais:</h3>
+        <ul>
+            <li><strong>I - Confirmação e acesso:</strong> Confirmar se tratamos seus dados e obter acesso a eles</li>
+            <li><strong>II - Correção:</strong> Solicitar correção de dados incompletos, inexatos ou desatualizados</li>
+            <li><strong>III - Anonimização, bloqueio ou eliminação:</strong> Solicitar anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade</li>
+            <li><strong>IV - Portabilidade:</strong> Solicitar portabilidade de dados a outro fornecedor</li>
+            <li><strong>V - Eliminação:</strong> Solicitar eliminação de dados tratados com consentimento</li>
+            <li><strong>VI - Informação sobre compartilhamento:</strong> Obter informação sobre entidades com quem compartilhamos dados</li>
+            <li><strong>VII - Informação sobre não consentimento:</strong> Ser informado sobre a possibilidade de não fornecer consentimento e suas consequências</li>
+            <li><strong>VIII - Revogação do consentimento:</strong> Revogar consentimento a qualquer momento</li>
+        </ul>
+
+        <h3>Como Exercer Seus Direitos:</h3>
+        <div class="contact-info">
+            <h4>Canais para Exercício de Direitos LGPD:</h4>
+            <p><strong>Email:</strong> suportebr@graycatcorp.com</p>
+            <p><strong>Pelo aplicativo:</strong> Menu > Configurações > Privacidade e Dados</p>
+            <p><strong>Prazo de resposta:</strong> Até 15 dias conforme Art. 19 da LGPD</p>
+            <p><strong>Gratuidade:</strong> O exercício dos direitos é gratuito, salvo exceções legais</p>
+        </div>
+
+        <h3>Limitações dos Direitos:</h3>
+        <p>Conforme Art. 18, §§3º e 4º da LGPD, alguns direitos podem ter limitações quando o tratamento for indispensável para:</p>
+        <ul>
+            <li>Cumprimento de obrigação legal ou regulatória</li>
+            <li>Política pública</li>
+            <li>Exercício regular de direitos em processo judicial, administrativo ou arbitral</li>
+            <li>Proteção da vida ou integridade física</li>
+            <li>Tutela da saúde em procedimento realizado por profissionais de saúde</li>
+            <li>Atendimento do legítimo interesse do controlador ou terceiro</li>
+            <li>Proteção do crédito</li>
+        </ul>
+
+        <div class="brazilian-law">
+            <p><strong>Reclamação à ANPD:</strong> Se não ficar satisfeito com nossa resposta, você pode apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD) através do site www.gov.br/anpd.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>12. CONTROLES PARA RECURSOS DE NÃO RASTREAMENTO</h2>
+        
+        <p>Respeitamos sinais de "Não Rastreamento" (Do Not Track) quando tecnicamente viáveis. No aplicativo móvel, você pode controlar o rastreamento através de:</p>
+        <ul>
+            <li>Configurações de privacidade do dispositivo</li>
+            <li>Configurações internas do aplicativo</li>
+            <li>Opt-out de análises e cookies não essenciais</li>
+        </ul>
+        
+        <p>Algumas funcionalidades podem ser limitadas se você desabilitar completamente o rastreamento, mas as funcionalidades essenciais do Comboa continuarão funcionando.</p>
+    </div>
+
+    <div class="section">
+        <h2>13. FAZEMOS ATUALIZAÇÕES NESTA POLÍTICA?</h2>
+        
+        <div class="highlight-box">
+            <p><strong><em>Em resumo:</em></strong> <em>Sim, atualizamos esta política conforme necessário para manter conformidade com a legislação brasileira e melhorar nossos serviços.</em></p>
+        </div>
+        
+        <p>Podemos atualizar esta Política de Privacidade periodicamente. Quando fizermos alterações substanciais, notificaremos você através de:</p>
+        <ul>
+            <li>Notificação no aplicativo</li>
+            <li>Email para o endereço cadastrado</li>
+            <li>Aviso em destaque no aplicativo</li>
+        </ul>
+        
+        <p>A versão atualizada sempre será indicada pela data de "Última atualização" no topo desta Política. Recomendamos que você revise esta Política periodicamente.</p>
+
+        <div class="brazilian-law">
+            <p><strong>Direito de Oposição:</strong> Se você não concordar com as alterações, poderá se opor ou encerrar sua conta, exercendo seus direitos conforme a LGPD.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>14. COMO VOCÊ PODE ENTRAR EM CONTATO CONOSCO?</h2>
+        
+        <p>Para questões sobre esta Política de Privacidade, exercício dos seus direitos LGPD ou preocupações sobre tratamento de dados:</p>
+        
+        <div class="contact-info">
+            <h4>CONTROLADOR DE DADOS PESSOAIS</h4>
+            <p><strong>Razão Social:</strong> D EMANUEL MATOS FARIAS BRANCO - DESENVOLVIMENTO DE SOFTWARE LTDA</p>
+            <p><strong>Nome Fantasia:</strong> Gray Cat Corporation</p>
+            <p><strong>Endereço:</strong> AL SALVADOR, 1057 - TORRE AMÉRICA SALA 911 E 912</p>
+            <p><strong>Cidade:</strong> Salvador, Bahia - CEP: 41820-790</p>
+            <p><strong>País:</strong> Brasil</p>
+            <br>
+            <p><strong>Email para questões LGPD:</strong> suportebr@graycatcorp.com</p>
+            <p><strong>Assunto:</strong> [LGPD] - [Tipo de solicitação]</p>
+            <p><strong>Prazo de resposta:</strong> Até 15 dias úteis</p>
+        </div>
+
+        <div class="lgpd-box">
+            <p><strong>Encarregado de Dados (DPO):</strong> Para questões específicas sobre proteção de dados, você pode entrar em contato diretamente com nosso Encarregado através do mesmo email, identificando a solicitação como "Para o Encarregado de Dados".</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>15. COMO EXERCER SEUS DIREITOS SOBRE OS DADOS?</h2>
+        
+        <p>Para exercer qualquer dos seus direitos previstos na LGPD:</p>
+        
+        <h3>Pelo Aplicativo:</h3>
+        <ol>
+            <li>Acesse Menu > Configurações</li>
+            <li>Selecione "Privacidade e Dados"</li>
+            <li>Escolha a ação desejada</li>
+            <li>Siga as instruções na tela</li>
+        </ol>
+
+        <h3>Por Email:</h3>
+        <ol>
+            <li>Envie email para: <strong>suportebr@graycatcorp.com</strong></li>
+            <li>Assunto: "[LGPD] - [Tipo de direito]"</li>
+            <li>Inclua: Nome completo, email cadastrado, descrição da solicitação</li>
+            <li>Anexe documento de identificação</li>
+        </ol>
+
+        <h3>Tipos de Solicitação:</h3>
+        <ul>
+            <li><strong>[LGPD] - Acesso:</strong> Para obter cópia dos seus dados</li>
+            <li><strong>[LGPD] - Correção:</strong> Para corrigir dados incorretos</li>
+            <li><strong>[LGPD] - Exclusão:</strong> Para excluir sua conta e dados</li>
+            <li><strong>[LGPD] - Portabilidade:</strong> Para transferir dados para outro serviço</li>
+            <li><strong>[LGPD] - Oposição:</strong> Para se opor ao tratamento</li>
+            <li><strong>[LGPD] - Informações:</strong> Para esclarecer como tratamos seus dados</li>
+        </ul>
+
+        <div class="contact-info">
+            <h4>Prazos e Procedimentos LGPD:</h4>
+            <p><strong>Resposta inicial:</strong> Até 15 dias corridos</p>
+            <p><strong>Atendimento da solicitação:</strong> Imediato ou conforme cronograma informado</p>
+            <p><strong>Verificação de identidade:</strong> Pode ser solicitada para proteção dos dados</p>
+            <p><strong>Gratuidade:</strong> Primeira solicitação por direito é gratuita a cada 12 meses</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 D Emanuel Matos Farias Branco - Desenvolvimento de Software LTDA (Gray Cat Corporation)</p>
+        <p>Este documento está em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</p>
+        <p>Política de Privacidade elaborada em conformidade com a legislação brasileira vigente</p>
+    </div>
+</body>
+</html>
