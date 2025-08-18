@@ -494,6 +494,7 @@
                 <li><a href="#about" onclick="showSection('about')">Sobre</a></li>
                 <li><a href="#services" onclick="showSection('services')">Serviços</a></li>
                 <li><a href="#contact" onclick="showSection('contact')">Contato</a></li>
+                <li><a href="#support" onclick="showSection('support')">Suporte</a></li>
                 <li><a href="#legal" onclick="showSection('legal')">Documentos Legais</a></li>
             </ul>
         </nav>
@@ -613,6 +614,76 @@
             </div>
         </section>
 
+        <!-- Support Section -->
+        <section id="support" class="section-content hidden">
+            <div class="section">
+                <div class="container">
+                    <h2 class="section-title fade-in">Suporte ao Usuário</h2>
+                    <p class="section-subtitle fade-in">
+                        Estamos aqui para ajudar. Encontre informações sobre como gerenciar seus dados pessoais, 
+                        exercer seus direitos conforme a LGPD e obter suporte técnico.
+                    </p>
+                    
+                    <div class="about-grid">
+                        <div class="value-card fade-in">
+                            <div class="value-icon">🔒</div>
+                            <h3>Exclusão de Conta e Dados</h3>
+                            <p><strong>Pelo Aplicativo Comboa:</strong></p>
+                            <ol style="margin-left: 1rem; margin-top: 1rem;">
+                                <li>Acesse Menu > Configurações</li>
+                                <li>Selecione "Privacidade e Dados"</li>
+                                <li>Escolha "Excluir Conta"</li>
+                                <li>Siga as instruções na tela</li>
+                            </ol>
+                            <p style="margin-top: 1rem;"><strong>Por Email:</strong></p>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <li>Email: <strong>suportebr@graycatcorp.com</strong></li>
+                                <li>Assunto: <strong>[LGPD] - Exclusão</strong></li>
+                                <li>Inclua: Nome completo, email cadastrado</li>
+                                <li>Anexe documento de identificação</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="value-card fade-in">
+                            <div class="value-icon">📧</div>
+                            <h3>Outros Direitos LGPD</h3>
+                            <p>Você pode exercer todos os seus direitos previstos na Lei Geral de Proteção de Dados:</p>
+                            <ul style="margin-left: 1rem; margin-top: 1rem;">
+                                <li><strong>Acesso:</strong> [LGPD] - Acesso</li>
+                                <li><strong>Correção:</strong> [LGPD] - Correção</li>
+                                <li><strong>Portabilidade:</strong> [LGPD] - Portabilidade</li>
+                                <li><strong>Oposição:</strong> [LGPD] - Oposição</li>
+                                <li><strong>Informações:</strong> [LGPD] - Informações</li>
+                            </ul>
+                            <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8);">
+                                <strong>Prazo de resposta:</strong> Até 15 dias corridos<br>
+                                <strong>Primeira solicitação:</strong> Gratuita por direito a cada 12 meses
+                            </p>
+                        </div>
+                        
+                        <div class="value-card fade-in">
+                            <div class="value-icon">🛠️</div>
+                            <h3>Suporte Técnico</h3>
+                            <p>Para questões técnicas, dúvidas sobre funcionalidades ou problemas com o aplicativo:</p>
+                            <div style="margin-top: 1rem;">
+                                <p><strong>Email:</strong> suportebr@graycatcorp.com</p>
+                                <p><strong>Horário:</strong> Segunda a sexta, 9h às 18h</p>
+                                <p><strong>Resposta:</strong> Até 5 dias úteis</p>
+                            </div>
+                            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                                <h4 style="margin-bottom: 0.5rem; color: #fff;">Informações Importantes:</h4>
+                                <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
+                                    • Dados são excluídos em até 30 dias<br>
+                                    • Alguns dados podem ser mantidos por obrigações legais<br>
+                                    • A exclusão é irreversível
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Legal Documents Section -->
         <section id="legal" class="section-content hidden">
             <div class="section">
@@ -620,32 +691,50 @@
                     <div class="legal-content">
                         <h2 class="section-title fade-in">Documentos Legais</h2>
                         <p class="section-subtitle fade-in">
-                            Acesse nossos documentos legais, políticas de privacidade e termos de uso. 
+                            Acesse nossos documentos legais organizados por produto. 
                             Transparência e conformidade legal são fundamentais em nossos serviços.
                         </p>
 
-                        <!-- Documents Grid -->
-                        <div class="documents-grid">
-                            <a href="privacy_policy_pdf.html" target="_blank" class="document-card fade-in">
-                                <div class="document-icon">🔒</div>
-                                <h3>Política de Privacidade</h3>
-                                <p>Como coletamos, processamos e protegemos suas informações pessoais conforme a LGPD.</p>
-                                <div class="date">Atualizada em 25 de julho de 2025</div>
-                            </a>
-                            
-                            <a href="termos_uso_comboa_br.html" target="_blank" class="document-card fade-in">
-                                <div class="document-icon">📋</div>
-                                <h3>Termos de Uso</h3>
-                                <p>Condições gerais para uso de nossos serviços e plataformas digitais.</p>
-                                <div class="date">Atualizada em 27 de julho de 2025</div>
-                            </a>
-                            
-                            <a href="eula_brasil_pdf.html" target="_blank" class="document-card fade-in">
-                                <div class="document-icon">📱</div>
-                                <h3>EULA - Comboa</h3>
-                                <p>Contrato de Licença do Usuário Final específico para o aplicativo Comboa.</p>
-                                <div class="date">Atualizada em 25 de julho de 2025</div>
-                            </a>
+                        <!-- Product Section: Comboa -->
+                        <div style="margin-bottom: 4rem;">
+                            <h3 style="color: #ffffff; font-size: 1.8rem; text-align: center; margin: 3rem 0 2rem; padding-bottom: 1rem; border-bottom: 2px solid rgba(255, 255, 255, 0.2);">
+                                📱 Aplicativo Comboa
+                            </h3>
+                            <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                                Documentos legais específicos para o aplicativo móvel de receitas fitness e estilo de vida saudável.
+                            </p>
+
+                            <!-- Comboa Documents Grid -->
+                            <div class="documents-grid">
+                                <a href="privacy_policy_pdf.html" target="_blank" class="document-card fade-in">
+                                    <div class="document-icon">🔒</div>
+                                    <h3>Política de Privacidade</h3>
+                                    <p>Como coletamos, processamos e protegemos suas informações pessoais conforme a LGPD.</p>
+                                    <div class="date">Atualizada em 25 de julho de 2025</div>
+                                </a>
+                                
+                                <a href="termos_uso_comboa_br.html" target="_blank" class="document-card fade-in">
+                                    <div class="document-icon">📋</div>
+                                    <h3>Termos de Uso</h3>
+                                    <p>Condições gerais para uso do aplicativo Comboa e seus serviços relacionados.</p>
+                                    <div class="date">Atualizada em 27 de julho de 2025</div>
+                                </a>
+                                
+                                <a href="eula_brasil_pdf.html" target="_blank" class="document-card fade-in">
+                                    <div class="document-icon">📱</div>
+                                    <h3>EULA - Comboa</h3>
+                                    <p>Contrato de Licença do Usuário Final específico para o aplicativo Comboa.</p>
+                                    <div class="date">Atualizada em 25 de julho de 2025</div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Future Products Section (Placeholder) -->
+                        <div style="text-align: center; padding: 3rem; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h3 style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">🚀 Futuros Produtos</h3>
+                            <p style="color: rgba(255, 255, 255, 0.5);">
+                                Novos produtos e seus respectivos documentos legais serão adicionados aqui conforme formos expandindo nosso portfólio.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -661,6 +750,7 @@
                     <a href="#about" onclick="showSection('about')">Sobre</a>
                     <a href="#services" onclick="showSection('services')">Serviços</a>
                     <a href="#contact" onclick="showSection('contact')">Contato</a>
+                    <a href="#support" onclick="showSection('support')">Suporte</a>
                     <a href="#legal" onclick="showSection('legal')">Documentos Legais</a>
                 </div>
                 <div class="copyright">
