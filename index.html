@@ -3,27 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gray Cat Corporation - Apps e Jogos Disruptivos</title>
+    <title>Gray Cat Corporation | O Futuro da Tecnologia</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
     <link rel="apple-touch-icon" href="logo.jpeg">
-    <meta name="theme-color" content="#0c0c0c">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Meta SEO -->
+    <meta name="description" content="Gray Cat Corporation - Pioneiros em desenvolvimento de aplicativos e jogos que transcendem o convencional. Criamos o futuro, hoje.">
+    <meta name="keywords" content="apps, jogos, desenvolvimento, tecnologia, inovação, futuro, Gray Cat">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-muted: rgba(255, 255, 255, 0.5);
-            --glow-purple: rgba(102, 126, 234, 0.4);
-            --glow-cyan: rgba(79, 172, 254, 0.4);
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-medium: #111111;
+            --white: #ffffff;
+            --gray-100: rgba(255, 255, 255, 0.9);
+            --gray-200: rgba(255, 255, 255, 0.7);
+            --gray-300: rgba(255, 255, 255, 0.5);
+            --gray-400: rgba(255, 255, 255, 0.3);
+            --gray-500: rgba(255, 255, 255, 0.1);
+            --gray-600: rgba(255, 255, 255, 0.05);
+            --cyan: #00f0ff;
+            --cyan-glow: rgba(0, 240, 255, 0.5);
+            --magenta: #ff00ff;
+            --magenta-glow: rgba(255, 0, 255, 0.3);
+            --red: #ff3333;
+            --green: #00ff88;
         }
 
         * {
@@ -37,69 +50,214 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--dark-gradient);
-            color: var(--text-primary);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
+            cursor: default;
         }
 
-        /* Animated Background */
-        .bg-gradient {
+        ::selection {
+            background: var(--cyan);
+            color: var(--black);
+        }
+
+        /* ==================== CANVAS PARTICLES ==================== */
+        #particles-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ==================== SCAN LINES OVERLAY ==================== */
+        .scan-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1) 0px,
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            opacity: 0.3;
+        }
+
+        /* ==================== GRID BACKGROUND ==================== */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(var(--cyan) 1px, transparent 1px),
+                linear-gradient(90deg, var(--cyan) 1px, transparent 1px);
+            background-size: 100px 100px;
+            pointer-events: none;
+        }
+
+        /* ==================== CUSTOM CURSOR ==================== */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.1s ease, opacity 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            transform: translate(-50%, -50%) scale(2);
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        /* ==================== PRELOADER ==================== */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            letter-spacing: 0.5em;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            animation: glitch 2s infinite;
+        }
+
+        .preloader-bar {
+            width: 200px;
+            height: 2px;
+            background: var(--gray-500);
+            position: relative;
             overflow: hidden;
         }
 
-        .bg-gradient::before {
+        .preloader-bar::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, rgba(79, 172, 254, 0.1) 0%, transparent 40%);
-            animation: gradientMove 20s ease-in-out infinite;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--cyan);
+            animation: loading 2s ease-in-out forwards;
+            box-shadow: 0 0 20px var(--cyan-glow);
         }
 
-        @keyframes gradientMove {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(2%, 2%) rotate(5deg); }
-            50% { transform: translate(-2%, 4%) rotate(-5deg); }
-            75% { transform: translate(4%, -2%) rotate(3deg); }
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
+        /* ==================== GLITCH EFFECT ==================== */
+        @keyframes glitch {
+            0%, 90%, 100% {
+                opacity: 1;
+                transform: translate(0);
+                text-shadow: none;
+            }
+            91% {
+                opacity: 0.8;
+                transform: translate(-2px, 1px);
+                text-shadow: 2px 0 var(--magenta), -2px 0 var(--cyan);
+            }
+            92% {
+                opacity: 1;
+                transform: translate(2px, -1px);
+                text-shadow: -2px 0 var(--magenta), 2px 0 var(--cyan);
+            }
+            93% {
+                transform: translate(0);
+                text-shadow: none;
+            }
         }
 
-        /* Header */
+        @keyframes glitch-strong {
+            0%, 85%, 100% {
+                opacity: 1;
+                transform: translate(0) skewX(0);
+            }
+            86% {
+                transform: translate(-5px, 2px) skewX(-5deg);
+                text-shadow: 3px 0 var(--magenta), -3px 0 var(--cyan);
+            }
+            87% {
+                transform: translate(5px, -2px) skewX(5deg);
+                text-shadow: -3px 0 var(--magenta), 3px 0 var(--cyan);
+            }
+            88% {
+                transform: translate(-3px, 1px) skewX(-2deg);
+            }
+            89% {
+                transform: translate(0) skewX(0);
+                text-shadow: none;
+            }
+        }
+
+        /* ==================== HEADER ==================== */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+            padding: 1.5rem 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         header.scrolled {
-            background: rgba(12, 12, 12, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--gray-500);
         }
 
         nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -108,19 +266,32 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 14px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            gap: 1rem;
             text-decoration: none;
+            color: var(--white);
+            position: relative;
         }
 
         .logo-icon {
-            width: 42px;
-            height: 42px;
-            background: url('logo.jpeg') center/contain no-repeat;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            width: 45px;
+            height: 45px;
+            background: url('logo.jpeg') center/cover no-repeat;
+            border-radius: 8px;
+            border: 1px solid var(--gray-400);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
         }
 
         .nav-links {
@@ -130,41 +301,54 @@
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--gray-200);
             text-decoration: none;
+            font-size: 0.85rem;
             font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 100px;
-            transition: all 0.3s ease;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.75rem 1.25rem;
             position: relative;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: var(--glass-bg);
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--cyan);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--cyan-glow);
         }
 
+        .nav-links a:hover,
         .nav-links a.active {
-            color: var(--text-primary);
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            color: var(--white);
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            width: 100%;
         }
 
         /* Mobile Menu */
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
             padding: 10px;
             z-index: 1001;
         }
 
         .menu-toggle span {
-            width: 24px;
-            height: 2px;
-            background: var(--text-primary);
-            border-radius: 2px;
+            width: 30px;
+            height: 1px;
+            background: var(--white);
             transition: all 0.3s ease;
         }
 
@@ -180,267 +364,682 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Hero Section */
+        /* ==================== MAIN CONTENT ==================== */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-content {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* ==================== HERO SECTION ==================== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
-            padding-top: 100px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('A31D2CDB-4DF8-47AB-9BDA-A2B342DB5169_1_201_a.jpeg') no-repeat center center;
-            background-size: cover;
-            opacity: 0.15;
-            z-index: -1;
+            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 800px;
+            text-align: center;
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero-badge {
+        .hero-tag {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 100px;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            gap: 12px;
+            padding: 10px 24px;
+            border: 1px solid var(--gray-400);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray-200);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: #4facfe;
+        .hero-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--gray-500), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .hero-tag .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--cyan);
             border-radius: 50%;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 10px var(--cyan-glow);
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+            50% { opacity: 0.5; transform: scale(1.5); }
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            animation: glitch-strong 5s infinite;
+        }
+
+        .hero h1 .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero h1 .line span {
+            display: inline-block;
+            transform: translateY(100%);
+            animation: revealText 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .hero h1 .line:nth-child(2) span {
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 .line:nth-child(3) span {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes revealText {
+            to { transform: translateY(0); }
         }
 
         .hero h1 .gradient-text {
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--magenta) 50%, var(--cyan) 100%);
+            background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: gradientShift 5s ease infinite;
+            animation: gradientMove 3s linear infinite;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
+        @keyframes gradientMove {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
-        .hero p {
+        .hero-description {
             font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
+            color: var(--gray-200);
+            max-width: 700px;
+            margin: 0 auto 3rem;
             line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
+            justify-content: center;
             flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
         }
 
+        /* ==================== BUTTONS ==================== */
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 100px;
+            gap: 12px;
+            padding: 18px 36px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
             font-weight: 600;
-            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
             border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-            box-shadow: 0 4px 20px var(--glow-purple);
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px var(--glow-purple);
+            background: var(--cyan);
+            box-shadow: 0 0 40px var(--cyan-glow);
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: var(--glass-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gray-400);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-3px);
+            border-color: var(--cyan);
+            color: var(--cyan);
+            box-shadow: 0 0 30px var(--cyan-glow), inset 0 0 30px rgba(0, 240, 255, 0.1);
         }
 
         .btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             transition: transform 0.3s ease;
         }
 
         .btn:hover svg {
-            transform: translateX(4px);
+            transform: translateX(5px);
         }
 
-        /* Sections */
+        /* ==================== SCROLL INDICATOR ==================== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray-300);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: var(--gray-500);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, transparent, var(--cyan));
+            animation: scrollDown 2s infinite;
+        }
+
+        @keyframes scrollDown {
+            0% { top: -100%; }
+            100% { top: 200%; }
+        }
+
+        /* ==================== SECTION STYLES ==================== */
         .section {
-            padding: 8rem 0;
+            padding: 10rem 0;
             position: relative;
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 5rem;
+            max-width: 800px;
+            margin: 0 auto 6rem;
         }
 
-        .section-tag {
-            display: inline-block;
-            padding: 6px 16px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #a5b4fc;
+        .section-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--cyan);
             margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            display: block;
         }
 
         .section-title {
+            font-family: 'Orbitron', monospace;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
         }
 
         .section-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
+            font-size: 1.1rem;
+            color: var(--gray-200);
             line-height: 1.8;
         }
 
-        /* Bento Grid - About */
-        .bento-grid {
+        /* ==================== ABOUT SECTION ==================== */
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
         }
 
-        .bento-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .about-card {
+            background: var(--gray-600);
+            border: 1px solid var(--gray-500);
+            padding: 3rem;
             position: relative;
             overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .bento-card::before {
+        .about-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .bento-card:hover::before {
+        .about-card:hover::before {
             opacity: 1;
         }
 
-        .bento-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(102, 126, 234, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
-                        0 0 60px var(--glow-purple);
+        .about-card:hover {
+            border-color: var(--gray-400);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
-        .bento-card.featured {
-            grid-column: span 2;
+        .about-card.large {
+            grid-column: span 8;
         }
 
-        .bento-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-            border-radius: 16px;
+        .about-card.medium {
+            grid-column: span 4;
+        }
+
+        .about-card.half {
+            grid-column: span 6;
+        }
+
+        .about-card-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--gray-500);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .about-card:hover .about-card-number {
+            color: var(--cyan);
+            text-shadow: 0 0 30px var(--cyan-glow);
+        }
+
+        .about-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .about-card p {
+            color: var(--gray-200);
+            line-height: 1.8;
+        }
+
+        /* ==================== APPS SECTION ==================== */
+        .apps-showcase {
+            position: relative;
+        }
+
+        .app-featured {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            margin-bottom: 8rem;
+        }
+
+        .app-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 580px;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-radius: 45px;
+            border: 3px solid var(--gray-400);
+            position: relative;
+            box-shadow:
+                0 50px 100px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+                0 0 100px var(--cyan-glow);
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 25px;
+            background: var(--black);
+            border-radius: 20px;
+        }
+
+        .phone-screen {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
+            border-radius: 35px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .phone-screen .app-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .phone-screen .app-tagline {
+            font-size: 0.8rem;
+            color: var(--gray-300);
+            text-align: center;
+        }
+
+        .glow-ring {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 1px solid var(--cyan);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: ringPulse 4s ease-in-out infinite;
+        }
+
+        .glow-ring:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            animation-delay: 0.5s;
+        }
+
+        .glow-ring:nth-child(3) {
+            width: 600px;
+            height: 600px;
+            animation-delay: 1s;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.05); }
+        }
+
+        .app-info h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .app-info .app-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--cyan);
+            color: var(--black);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .app-info p {
+            font-size: 1.1rem;
+            color: var(--gray-200);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .app-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .app-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-600);
+            border: 1px solid var(--gray-500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            flex-shrink: 0;
+            font-size: 1.2rem;
         }
 
-        .bento-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
+        .app-feature span {
+            font-size: 0.9rem;
+            color: var(--gray-200);
+            line-height: 1.6;
+        }
+
+        .app-stores {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            background: var(--gray-600);
+            border: 1px solid var(--gray-500);
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .store-btn:hover {
+            border-color: var(--cyan);
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 30px var(--cyan-glow);
+        }
+
+        .store-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .store-btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .store-btn-text small {
+            font-size: 0.65rem;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .store-btn-text span {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Future Apps */
+        .future-apps {
+            margin-top: 6rem;
+        }
+
+        .future-apps-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .future-apps-header h4 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--text-primary);
         }
 
-        .bento-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
+        .future-apps-header p {
+            color: var(--gray-300);
         }
 
-        /* Services Grid */
+        .future-apps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .future-app-card {
+            background: var(--gray-600);
+            border: 1px dashed var(--gray-500);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-app-card::before {
+            content: 'EM BREVE';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--magenta);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+        }
+
+        .future-app-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .future-app-card h5 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray-200);
+        }
+
+        .future-app-card p {
+            font-size: 0.85rem;
+            color: var(--gray-300);
+        }
+
+        /* ==================== SERVICES SECTION ==================== */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
         .service-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            background: var(--gray-600);
+            border: 1px solid var(--gray-500);
             padding: 3rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-card::after {
@@ -448,148 +1047,236 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            width: 0;
+            height: 2px;
+            background: var(--cyan);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 20px var(--cyan-glow);
         }
 
         .service-card:hover::after {
-            transform: scaleX(1);
+            width: 100%;
         }
 
         .service-card:hover {
+            border-color: var(--gray-400);
             transform: translateY(-10px);
-            border-color: rgba(102, 126, 234, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.15), rgba(0, 242, 254, 0.15));
-            border-radius: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--black);
+            border: 1px solid var(--gray-500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            border: 1px solid rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px var(--cyan-glow);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            letter-spacing: 0.02em;
         }
 
         .service-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
+            color: var(--gray-200);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        /* Contact Grid */
-        .contact-grid {
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 15px;
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-wrapper {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
         }
 
-        .contact-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
+        .contact-info h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.3;
         }
 
-        .contact-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(79, 172, 254, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        .contact-info > p {
+            font-size: 1.1rem;
+            color: var(--gray-200);
+            line-height: 1.8;
+            margin-bottom: 3rem;
         }
 
-        .contact-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--gray-600);
+            border: 1px solid var(--gray-500);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            border-color: var(--cyan);
+            transform: translateX(10px);
+        }
+
+        .contact-method-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--black);
+            border: 1px solid var(--gray-500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 8px 30px var(--glow-cyan);
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
-        .contact-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
+        .contact-method-text h4 {
+            font-size: 0.75rem;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
         }
 
-        .contact-card p {
-            color: var(--text-secondary);
+        .contact-method-text p {
+            color: var(--white);
+            font-weight: 500;
         }
 
-        /* Support Cards */
+        .contact-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .contact-graphic {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border: 1px solid var(--gray-500);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-graphic::before,
+        .contact-graphic::after {
+            content: '';
+            position: absolute;
+            border: 1px solid var(--gray-500);
+        }
+
+        .contact-graphic::before {
+            width: 80%;
+            height: 80%;
+        }
+
+        .contact-graphic::after {
+            width: 60%;
+            height: 60%;
+        }
+
+        .contact-graphic .center-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            color: var(--cyan);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* ==================== SUPPORT SECTION ==================== */
         .support-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
         .support-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            background: var(--gray-600);
+            border: 1px solid var(--gray-500);
             padding: 2.5rem;
-            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
         .support-card:hover {
-            border-color: rgba(102, 126, 234, 0.3);
+            border-color: var(--gray-400);
         }
 
-        .support-card .icon-header {
+        .support-card-header {
             display: flex;
             align-items: center;
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
 
-        .support-card .icon-header .icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-            border-radius: 12px;
+        .support-card-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--black);
+            border: 1px solid var(--gray-500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .support-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
         .support-card p {
-            color: var(--text-secondary);
+            color: var(--gray-200);
             line-height: 1.7;
             margin-bottom: 1rem;
         }
 
-        .support-card ol, .support-card ul {
+        .support-card ol,
+        .support-card ul {
             margin-left: 1.25rem;
-            color: var(--text-secondary);
+            color: var(--gray-200);
             line-height: 1.8;
         }
 
@@ -598,80 +1285,70 @@
         }
 
         .support-card strong {
-            color: var(--text-primary);
+            color: var(--white);
         }
 
-        .info-box {
+        .info-highlight {
             margin-top: 1.5rem;
             padding: 1.25rem;
-            background: rgba(79, 172, 254, 0.1);
-            border: 1px solid rgba(79, 172, 254, 0.2);
-            border-radius: 12px;
+            background: rgba(0, 240, 255, 0.05);
+            border-left: 2px solid var(--cyan);
         }
 
-        .info-box h4 {
-            color: #4facfe;
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
+        .info-highlight h4 {
+            color: var(--cyan);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        .info-box p {
+        .info-highlight p {
             font-size: 0.9rem;
-            color: var(--text-secondary);
             margin: 0;
         }
 
-        /* Legal Documents */
+        /* ==================== LEGAL SECTION ==================== */
         .legal-section {
             max-width: 1100px;
             margin: 0 auto;
         }
 
         .product-section {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         .product-header {
             text-align: center;
             margin-bottom: 3rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--gray-500);
         }
 
         .product-header h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .product-header p {
-            color: var(--text-secondary);
-            max-width: 500px;
-            margin: 0 auto;
+            color: var(--gray-300);
         }
 
         .documents-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
         .document-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
+            background: var(--gray-600);
+            border: 1px solid var(--gray-500);
             padding: 2.5rem;
             text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -681,193 +1358,230 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary-gradient);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
-            z-index: -1;
         }
 
         .document-card:hover::before {
-            opacity: 0.1;
+            opacity: 1;
         }
 
         .document-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(102, 126, 234, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
-                        0 0 40px var(--glow-purple);
+            border-color: var(--cyan);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px var(--cyan-glow);
         }
 
         .document-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: var(--black);
+            border: 1px solid var(--gray-500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            font-size: 1.5rem;
         }
 
         .document-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
             margin-bottom: 0.75rem;
-            color: var(--text-primary);
+            letter-spacing: 0.02em;
         }
 
         .document-card p {
-            color: var(--text-secondary);
+            color: var(--gray-300);
+            font-size: 0.9rem;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            margin-bottom: 1rem;
         }
 
         .document-card .date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        .future-products {
+        .future-products-box {
             text-align: center;
-            padding: 3rem;
-            background: var(--glass-bg);
-            border: 1px dashed var(--glass-border);
-            border-radius: 20px;
+            padding: 4rem;
+            border: 1px dashed var(--gray-500);
         }
 
-        .future-products h3 {
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
+        .future-products-box h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--gray-300);
+            margin-bottom: 1rem;
         }
 
-        .future-products p {
-            color: var(--text-muted);
+        .future-products-box p {
+            color: var(--gray-400);
         }
 
-        /* Footer */
+        /* ==================== FOOTER ==================== */
         footer {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 4rem 0 2rem;
-            border-top: 1px solid var(--glass-border);
+            background: var(--black);
+            border-top: 1px solid var(--gray-500);
+            padding: 5rem 0 2rem;
         }
 
         .footer-content {
-            text-align: center;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
         }
 
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2rem;
+        .footer-brand .logo {
+            margin-bottom: 1.5rem;
         }
 
-        .footer-logo .logo-icon {
-            width: 36px;
-            height: 36px;
-        }
-
-        .footer-logo span {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
+        .footer-brand p {
+            color: var(--gray-300);
             font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-column h4 {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: var(--gray-300);
+            text-decoration: none;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--text-primary);
+        .footer-column a:hover {
+            color: var(--cyan);
         }
 
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.875rem;
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-500);
         }
 
-        /* Utilities */
+        .footer-bottom p {
+            color: var(--gray-400);
+            font-size: 0.85rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        /* ==================== UTILITIES ==================== */
         .hidden {
             display: none !important;
         }
 
-        /* Animations */
-        .fade-in {
+        /* Reveal Animations */
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .fade-in.visible {
+        .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .fade-in-left {
+        .reveal-left {
             opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateX(-50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .fade-in-left.visible {
+        .reveal-left.visible {
             opacity: 1;
             transform: translateX(0);
         }
 
-        .fade-in-right {
+        .reveal-right {
             opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateX(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .fade-in-right.visible {
+        .reveal-right.visible {
             opacity: 1;
             transform: translateX(0);
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 1024px) {
-            .bento-grid {
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1200px) {
+            .about-card.large { grid-column: span 12; }
+            .about-card.medium { grid-column: span 6; }
+            .about-card.half { grid-column: span 6; }
+
+            .app-featured {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .app-visual {
+                order: -1;
+            }
+
+            .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .bento-card.featured {
-                grid-column: span 2;
-            }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            nav { padding: 0 2rem; }
+            .container { padding: 0 2rem; }
+
             .nav-links {
                 position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(12, 12, 12, 0.98);
-                backdrop-filter: blur(20px);
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(30px);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 1rem;
                 transform: translateX(100%);
-                transition: transform 0.4s ease;
+                transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .nav-links.active {
@@ -876,59 +1590,84 @@
 
             .nav-links a {
                 font-size: 1.5rem;
-                padding: 1rem 2rem;
+                padding: 1rem;
             }
 
             .menu-toggle {
                 display: flex;
             }
 
-            .hero {
-                text-align: center;
-                padding-top: 120px;
+            .services-grid,
+            .support-grid,
+            .documents-grid,
+            .future-apps-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
+        }
 
-            .hero-content {
-                margin: 0 auto;
-            }
+        @media (max-width: 768px) {
+            .section { padding: 6rem 0; }
 
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .bento-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .bento-card.featured {
-                grid-column: span 1;
+            .about-card.large,
+            .about-card.medium,
+            .about-card.half {
+                grid-column: span 12;
             }
 
             .services-grid,
-            .contact-grid,
             .support-grid,
-            .documents-grid {
+            .documents-grid,
+            .future-apps-grid {
                 grid-template-columns: 1fr;
             }
 
-            .section {
-                padding: 5rem 0;
+            .contact-wrapper {
+                grid-template-columns: 1fr;
             }
 
-            .footer-links {
+            .contact-visual {
+                display: none;
+            }
+
+            .app-features {
+                grid-template-columns: 1fr;
+            }
+
+            .app-stores {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
                 flex-direction: column;
                 gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cursor, .cursor-dot {
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
+            nav { padding: 0 1.5rem; }
+            .container { padding: 0 1.5rem; }
+
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
             }
 
             .btn {
@@ -936,28 +1675,50 @@
                 justify-content: center;
             }
 
-            .bento-card, .service-card, .support-card {
-                padding: 1.75rem;
+            .phone-mockup {
+                width: 220px;
+                height: 460px;
+            }
+
+            .about-card,
+            .service-card,
+            .support-card {
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-text">GRAY CAT</div>
+        <div class="preloader-bar"></div>
+    </div>
 
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Background Effects -->
+    <canvas id="particles-canvas"></canvas>
+    <div class="grid-bg"></div>
+    <div class="scan-lines"></div>
+
+    <!-- Header -->
     <header id="header">
-        <nav class="container">
+        <nav>
             <a href="#home" class="logo" onclick="showSection('home')">
                 <div class="logo-icon"></div>
-                Gray Cat Corporation
+                <span class="logo-text">Gray Cat</span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" onclick="showSection('home'); closeMenu()">Início</a></li>
+                <li><a href="#home" onclick="showSection('home'); closeMenu()">Inicio</a></li>
                 <li><a href="#about" onclick="showSection('about'); closeMenu()">Sobre</a></li>
-                <li><a href="#services" onclick="showSection('services'); closeMenu()">Serviços</a></li>
+                <li><a href="#apps" onclick="showSection('apps'); closeMenu()">Apps</a></li>
+                <li><a href="#services" onclick="showSection('services'); closeMenu()">Servicos</a></li>
                 <li><a href="#contact" onclick="showSection('contact'); closeMenu()">Contato</a></li>
                 <li><a href="#support" onclick="showSection('support'); closeMenu()">Suporte</a></li>
-                <li><a href="#legal" onclick="showSection('legal'); closeMenu()">Documentos</a></li>
+                <li><a href="#legal" onclick="showSection('legal'); closeMenu()">Legal</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
                 <span></span>
@@ -968,221 +1729,407 @@
     </header>
 
     <main>
-        <!-- Home Section -->
+        <!-- HOME SECTION -->
         <section id="home" class="section-content">
             <div class="hero">
-                <div class="container">
-                    <div class="hero-content">
-                        <div class="hero-badge fade-in">
-                            <span class="dot"></span>
-                            Inovação em desenvolvimento
-                        </div>
-                        <h1 class="fade-in">
-                            Apps e jogos<br>
-                            <span class="gradient-text">disruptivos</span> que<br>
-                            elevam experiências
-                        </h1>
-                        <p class="fade-in">
-                            A Gray Cat nasce para ser um ambiente de desenvolvimento focado na criação de aplicativos e jogos disruptivos. Acreditamos que a melhor tecnologia é aquela que simplifica o complexo.
-                        </p>
-                        <div class="hero-buttons fade-in">
-                            <a href="#about" class="btn btn-primary" onclick="showSection('about')">
-                                Conheça nossa visão
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                            <a href="#contact" class="btn btn-secondary" onclick="showSection('contact')">
-                                Fale conosco
-                            </a>
-                        </div>
+                <div class="hero-content">
+                    <div class="hero-tag">
+                        <span class="status-dot"></span>
+                        Construindo o futuro
                     </div>
+                    <h1>
+                        <span class="line"><span>Tecnologia</span></span>
+                        <span class="line"><span>que <span class="gradient-text">transcende</span></span></span>
+                        <span class="line"><span>o impossivel</span></span>
+                    </h1>
+                    <p class="hero-description">
+                        Na Gray Cat Corporation, nao apenas desenvolvemos software.
+                        Arquitetamos experiencias que desafiam os limites do convencional,
+                        criando aplicativos e jogos que moldam o amanha.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#apps" class="btn btn-primary" onclick="showSection('apps')">
+                            Explorar Apps
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                        <a href="#about" class="btn btn-secondary" onclick="showSection('about')">
+                            Nossa Visao
+                        </a>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <span>Scroll</span>
+                    <div class="scroll-line"></div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- ABOUT SECTION -->
         <section id="about" class="section-content hidden">
             <div class="section">
                 <div class="container">
                     <div class="section-header">
-                        <span class="section-tag fade-in">Sobre nós</span>
-                        <h2 class="section-title fade-in">Transformamos ideias em<br><span class="gradient-text">experiências únicas</span></h2>
-                        <p class="section-subtitle fade-in">
-                            Nosso compromisso é com o design inteligente, a funcionalidade e a inovação que gera impacto real.
+                        <span class="section-number reveal">// 001</span>
+                        <h2 class="section-title reveal">
+                            Redefinindo o que e<br><span class="gradient-text">possivel</span>
+                        </h2>
+                        <p class="section-subtitle reveal">
+                            Somos uma forca disruptiva no universo do desenvolvimento.
+                            Cada linha de codigo que escrevemos carrega a ambicao de transformar
+                            a maneira como as pessoas interagem com a tecnologia.
                         </p>
                     </div>
 
-                    <div class="bento-grid">
-                        <div class="bento-card featured fade-in-left">
-                            <div class="bento-icon">🎯</div>
-                            <h3>Design Inteligente</h3>
-                            <p>Criamos interfaces que antecipam necessidades e simplificam interações complexas, tornando a tecnologia verdadeiramente acessível. Nossa abordagem centrada no usuário garante que cada elemento visual tenha um propósito claro.</p>
+                    <div class="about-grid">
+                        <div class="about-card large reveal-left">
+                            <div class="about-card-number">01</div>
+                            <h3>Visao Alem do Horizonte</h3>
+                            <p>
+                                Nascemos com uma missao clara: criar tecnologias que nao apenas resolvem problemas,
+                                mas que antecipam necessidades. Em um mundo saturado de solucoes mediocres,
+                                escolhemos o caminho da excelencia obsessiva. Cada projeto que abraçamos e uma
+                                oportunidade de provar que o extraordinario e alcancavel.
+                            </p>
                         </div>
 
-                        <div class="bento-card fade-in-right">
-                            <div class="bento-icon">⚡</div>
-                            <h3>Funcionalidade</h3>
-                            <p>Cada funcionalidade é pensada para agregar valor real, eliminando complexidades desnecessárias e focando no essencial.</p>
+                        <div class="about-card medium reveal-right">
+                            <div class="about-card-number">02</div>
+                            <h3>Precisao Cirurgica</h3>
+                            <p>
+                                Design nao e decoracao. E estrategia. Cada pixel, cada interacao,
+                                cada transicao e meticulosamente calculada para criar experiencias
+                                que parecem magica, mas sao pura engenharia.
+                            </p>
                         </div>
 
-                        <div class="bento-card fade-in-left">
-                            <div class="bento-icon">🚀</div>
-                            <h3>Inovação com Impacto</h3>
-                            <p>Desenvolvemos soluções que não apenas seguem tendências, mas criam novos padrões de interação e experiência.</p>
+                        <div class="about-card medium reveal-left">
+                            <div class="about-card-number">03</div>
+                            <h3>Inovacao Implacavel</h3>
+                            <p>
+                                Nao seguimos tendencias. Nos as criamos. Nossa equipe opera
+                                na intersecao entre o possivel e o impossivel, empurrando
+                                constantemente os limites do que a tecnologia pode fazer.
+                            </p>
                         </div>
 
-                        <div class="bento-card featured fade-in-right">
-                            <div class="bento-icon">💡</div>
-                            <h3>Tecnologia que Simplifica</h3>
-                            <p>Acreditamos que a melhor tecnologia é aquela que simplifica o complexo e eleva a interação do usuário a um novo patamar. Transformamos ideias complexas em soluções simples e elegantes que fazem a diferença no dia a dia.</p>
+                        <div class="about-card large reveal-right">
+                            <div class="about-card-number">04</div>
+                            <h3>Compromisso com a Excelencia</h3>
+                            <p>
+                                Acreditamos que bom o suficiente nunca e suficiente. Nosso padrao e a perfeicao,
+                                e cada produto que lancamos passa por um rigoroso processo de refinamento.
+                                Da concepcao ao lancamento, obsessao por qualidade e nosso DNA. Nao descansamos
+                                ate que cada detalhe esteja impecavel.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
+        <!-- APPS SECTION -->
+        <section id="apps" class="section-content hidden">
+            <div class="section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-number reveal">// 002</span>
+                        <h2 class="section-title reveal">
+                            Nossos <span class="gradient-text">Produtos</span>
+                        </h2>
+                        <p class="section-subtitle reveal">
+                            Aplicativos projetados para transformar vidas.
+                            Cada um representa nossa visao de como a tecnologia
+                            deve servir a humanidade.
+                        </p>
+                    </div>
+
+                    <div class="apps-showcase">
+                        <!-- COMBOA -->
+                        <div class="app-featured">
+                            <div class="app-visual reveal-left">
+                                <div class="glow-ring"></div>
+                                <div class="glow-ring"></div>
+                                <div class="glow-ring"></div>
+                                <div class="phone-mockup">
+                                    <div class="phone-screen">
+                                        <div class="app-logo">COMBOA</div>
+                                        <div class="app-tagline">Sua jornada para uma vida mais saudavel</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-info reveal-right">
+                                <div class="app-badge">Disponivel Agora</div>
+                                <h3>COMBOA</h3>
+                                <p>
+                                    O Comboa nao e apenas um aplicativo de receitas. E um companheiro
+                                    inteligente na sua jornada de transformacao. Utilizando inteligencia
+                                    artificial de ponta, o ComboaIA aprende suas preferencias, restricoes
+                                    alimentares e objetivos para criar sugestoes personalizadas que se
+                                    adaptam ao seu estilo de vida.
+                                </p>
+                                <div class="app-features">
+                                    <div class="app-feature">
+                                        <div class="app-feature-icon">🧠</div>
+                                        <span>IA que aprende e evolui com voce</span>
+                                    </div>
+                                    <div class="app-feature">
+                                        <div class="app-feature-icon">🥗</div>
+                                        <span>Receitas para todas as dietas</span>
+                                    </div>
+                                    <div class="app-feature">
+                                        <div class="app-feature-icon">🏆</div>
+                                        <span>Desafios semanais motivadores</span>
+                                    </div>
+                                    <div class="app-feature">
+                                        <div class="app-feature-icon">📊</div>
+                                        <span>Acompanhamento de progresso</span>
+                                    </div>
+                                </div>
+                                <div class="app-stores">
+                                    <a href="https://apps.apple.com" target="_blank" class="store-btn">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                        </svg>
+                                        <div class="store-btn-text">
+                                            <small>Baixe na</small>
+                                            <span>App Store</span>
+                                        </div>
+                                    </a>
+                                    <a href="https://play.google.com" target="_blank" class="store-btn">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                                        </svg>
+                                        <div class="store-btn-text">
+                                            <small>Disponivel no</small>
+                                            <span>Google Play</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Future Apps -->
+                        <div class="future-apps">
+                            <div class="future-apps-header reveal">
+                                <h4>Proximos Lancamentos</h4>
+                                <p>Estamos trabalhando em experiencias revolucionarias. Fique atento.</p>
+                            </div>
+                            <div class="future-apps-grid">
+                                <div class="future-app-card reveal">
+                                    <div class="icon">🎮</div>
+                                    <h5>Projeto Aurora</h5>
+                                    <p>Jogo mobile que vai redefinir o genero</p>
+                                </div>
+                                <div class="future-app-card reveal">
+                                    <div class="icon">🤖</div>
+                                    <h5>Projeto Nexus</h5>
+                                    <p>Assistente pessoal com IA generativa</p>
+                                </div>
+                                <div class="future-app-card reveal">
+                                    <div class="icon">🌐</div>
+                                    <h5>Projeto Horizon</h5>
+                                    <p>Plataforma social de nova geracao</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
         <section id="services" class="section-content hidden">
             <div class="section">
                 <div class="container">
                     <div class="section-header">
-                        <span class="section-tag fade-in">Nossos serviços</span>
-                        <h2 class="section-title fade-in">Especializados em<br><span class="gradient-text">transformar conceitos</span></h2>
-                        <p class="section-subtitle fade-in">
-                            Criamos aplicações revolucionárias que redefinem mercados e experiências.
+                        <span class="section-number reveal">// 003</span>
+                        <h2 class="section-title reveal">
+                            Capacidades <span class="gradient-text">Ilimitadas</span>
+                        </h2>
+                        <p class="section-subtitle reveal">
+                            Da concepcao a execucao, dominamos cada etapa do processo
+                            de desenvolvimento. Nossa expertise abrange todo o espectro
+                            da criacao digital.
                         </p>
                     </div>
 
                     <div class="services-grid">
-                        <div class="service-card fade-in">
+                        <div class="service-card reveal">
                             <div class="service-icon">📱</div>
-                            <h3>Desenvolvimento de Apps</h3>
-                            <p>Criamos aplicativos mobile nativos e híbridos que combinam performance excepcional com design disruptivo, focando na experiência do usuário em cada detalhe.</p>
+                            <h3>Aplicativos Mobile</h3>
+                            <p>
+                                Desenvolvemos aplicativos nativos e hibridos que estabelecem
+                                novos padroes de qualidade. Performance brutal, design
+                                impecavel, experiencia do usuario obsessivamente refinada.
+                            </p>
+                            <a href="#contact" class="service-link" onclick="showSection('contact')">
+                                Iniciar projeto
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
                         </div>
 
-                        <div class="service-card fade-in">
+                        <div class="service-card reveal">
                             <div class="service-icon">🎮</div>
                             <h3>Desenvolvimento de Jogos</h3>
-                            <p>Desenvolvemos jogos inovadores que desafiam convenções, criando experiências imersivas e envolventes que conectam jogadores de forma única.</p>
+                            <p>
+                                Criamos experiencias interativas que capturam a imaginacao.
+                                Nossos jogos combinam narrativas envolventes, mecanicas
+                                inovadoras e visuais que impressionam.
+                            </p>
+                            <a href="#contact" class="service-link" onclick="showSection('contact')">
+                                Iniciar projeto
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
                         </div>
 
-                        <div class="service-card fade-in">
+                        <div class="service-card reveal">
                             <div class="service-icon">🔬</div>
-                            <h3>Prototipagem e MVP</h3>
-                            <p>Transformamos ideias em protótipos funcionais e MVPs que validam conceitos rapidamente, minimizando riscos e maximizando aprendizado.</p>
+                            <h3>Prototipagem & MVP</h3>
+                            <p>
+                                Transformamos conceitos em prototipos funcionais com
+                                velocidade cirurgica. Validamos hipoteses, minimizamos
+                                riscos e aceleramos o caminho ao mercado.
+                            </p>
+                            <a href="#contact" class="service-link" onclick="showSection('contact')">
+                                Iniciar projeto
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- CONTACT SECTION -->
         <section id="contact" class="section-content hidden">
             <div class="section">
                 <div class="container">
-                    <div class="section-header">
-                        <span class="section-tag fade-in">Contato</span>
-                        <h2 class="section-title fade-in">Vamos criar algo<br><span class="gradient-text">extraordinário juntos</span></h2>
-                        <p class="section-subtitle fade-in">
-                            Pronto para transformar sua visão em realidade? Entre em contato.
-                        </p>
-                    </div>
-
-                    <div class="contact-grid">
-                        <div class="contact-card fade-in">
-                            <div class="contact-icon">📧</div>
-                            <h3>Email</h3>
-                            <p>contato@graycatcorp.com</p>
+                    <div class="contact-wrapper">
+                        <div class="contact-info reveal-left">
+                            <h3>Vamos construir o<br><span class="gradient-text">impossivel juntos</span></h3>
+                            <p>
+                                Tem uma ideia que parece ambiciosa demais? Otimo.
+                                Essas sao nossas favoritas. Entre em contato e vamos
+                                discutir como transformar sua visao em realidade.
+                            </p>
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <div class="contact-method-icon">📧</div>
+                                    <div class="contact-method-text">
+                                        <h4>Email Geral</h4>
+                                        <p>contato@graycatcorp.com</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <div class="contact-method-icon">🛠</div>
+                                    <div class="contact-method-text">
+                                        <h4>Suporte Tecnico</h4>
+                                        <p>suportebr@graycatcorp.com</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <div class="contact-method-icon">💼</div>
+                                    <div class="contact-method-text">
+                                        <h4>LinkedIn</h4>
+                                        <p>Gray Cat Corporation</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <div class="contact-method-icon">📍</div>
+                                    <div class="contact-method-text">
+                                        <h4>Localizacao</h4>
+                                        <p>Salvador, Bahia - Brasil</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="contact-card fade-in">
-                            <div class="contact-icon">💼</div>
-                            <h3>LinkedIn</h3>
-                            <p>Gray Cat Corporation</p>
-                        </div>
-
-                        <div class="contact-card fade-in">
-                            <div class="contact-icon">📍</div>
-                            <h3>Localização</h3>
-                            <p>Brasil</p>
+                        <div class="contact-visual reveal-right">
+                            <div class="contact-graphic">
+                                <span class="center-text">Let's Talk</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Support Section -->
+        <!-- SUPPORT SECTION -->
         <section id="support" class="section-content hidden">
             <div class="section">
                 <div class="container">
                     <div class="section-header">
-                        <span class="section-tag fade-in">Suporte</span>
-                        <h2 class="section-title fade-in">Estamos aqui para<br><span class="gradient-text">ajudar você</span></h2>
-                        <p class="section-subtitle fade-in">
-                            Encontre informações sobre como gerenciar seus dados pessoais e exercer seus direitos conforme a LGPD.
+                        <span class="section-number reveal">// 004</span>
+                        <h2 class="section-title reveal">
+                            Central de <span class="gradient-text">Suporte</span>
+                        </h2>
+                        <p class="section-subtitle reveal">
+                            Transparencia e controle sobre seus dados. Aqui voce encontra
+                            todas as informacoes para exercer seus direitos conforme a LGPD.
                         </p>
                     </div>
 
                     <div class="support-grid">
-                        <div class="support-card fade-in">
-                            <div class="icon-header">
-                                <div class="icon">🔒</div>
-                                <h3>Exclusão de Conta e Dados</h3>
+                        <div class="support-card reveal">
+                            <div class="support-card-header">
+                                <div class="support-card-icon">🔒</div>
+                                <h3>Exclusao de Conta</h3>
                             </div>
                             <p><strong>Pelo Aplicativo Comboa:</strong></p>
                             <ol>
-                                <li>Acesse Menu > Configurações</li>
+                                <li>Acesse Menu > Configuracoes</li>
                                 <li>Selecione "Privacidade e Dados"</li>
                                 <li>Escolha "Excluir Conta"</li>
-                                <li>Siga as instruções na tela</li>
+                                <li>Siga as instrucoes na tela</li>
                             </ol>
                             <p style="margin-top: 1rem;"><strong>Por Email:</strong></p>
                             <ul>
                                 <li>Email: <strong>suportebr@graycatcorp.com</strong></li>
-                                <li>Assunto: <strong>[LGPD] - Exclusão</strong></li>
+                                <li>Assunto: <strong>[LGPD] - Exclusao</strong></li>
                                 <li>Inclua: Nome completo, email cadastrado</li>
-                                <li>Anexe documento de identificação</li>
                             </ul>
                         </div>
 
-                        <div class="support-card fade-in">
-                            <div class="icon-header">
-                                <div class="icon">📧</div>
-                                <h3>Outros Direitos LGPD</h3>
+                        <div class="support-card reveal">
+                            <div class="support-card-header">
+                                <div class="support-card-icon">📋</div>
+                                <h3>Direitos LGPD</h3>
                             </div>
-                            <p>Você pode exercer todos os seus direitos previstos na Lei Geral de Proteção de Dados:</p>
+                            <p>Exerca todos os seus direitos previstos na Lei:</p>
                             <ul>
                                 <li><strong>Acesso:</strong> [LGPD] - Acesso</li>
-                                <li><strong>Correção:</strong> [LGPD] - Correção</li>
+                                <li><strong>Correcao:</strong> [LGPD] - Correcao</li>
                                 <li><strong>Portabilidade:</strong> [LGPD] - Portabilidade</li>
-                                <li><strong>Oposição:</strong> [LGPD] - Oposição</li>
-                                <li><strong>Informações:</strong> [LGPD] - Informações</li>
+                                <li><strong>Oposicao:</strong> [LGPD] - Oposicao</li>
+                                <li><strong>Informacoes:</strong> [LGPD] - Informacoes</li>
                             </ul>
-                            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
-                                <strong>Prazo de resposta:</strong> Até 15 dias corridos<br>
-                                <strong>Primeira solicitação:</strong> Gratuita por direito a cada 12 meses
-                            </p>
+                            <div class="info-highlight">
+                                <h4>Prazos</h4>
+                                <p>Resposta em ate 15 dias corridos. Primeira solicitacao gratuita a cada 12 meses.</p>
+                            </div>
                         </div>
 
-                        <div class="support-card fade-in">
-                            <div class="icon-header">
-                                <div class="icon">🛠️</div>
-                                <h3>Suporte Técnico</h3>
+                        <div class="support-card reveal">
+                            <div class="support-card-header">
+                                <div class="support-card-icon">🛠</div>
+                                <h3>Suporte Tecnico</h3>
                             </div>
-                            <p>Para questões técnicas, dúvidas sobre funcionalidades ou problemas com o aplicativo:</p>
-                            <p style="margin-top: 1rem;">
-                                <strong>Email:</strong> suportebr@graycatcorp.com<br>
-                                <strong>Horário:</strong> Segunda a sexta, 9h às 18h<br>
-                                <strong>Resposta:</strong> Até 5 dias úteis
-                            </p>
-                            <div class="info-box">
-                                <h4>Informações Importantes</h4>
-                                <p>
-                                    • Dados são excluídos em até 30 dias<br>
-                                    • Alguns dados podem ser mantidos por obrigações legais<br>
-                                    • A exclusão é irreversível
-                                </p>
+                            <p>Para questoes tecnicas ou problemas com o aplicativo:</p>
+                            <ul>
+                                <li><strong>Email:</strong> suportebr@graycatcorp.com</li>
+                                <li><strong>Horario:</strong> Seg-Sex, 9h as 18h</li>
+                                <li><strong>Resposta:</strong> Ate 5 dias uteis</li>
+                            </ul>
+                            <div class="info-highlight">
+                                <h4>Importante</h4>
+                                <p>Dados excluidos em ate 30 dias. Alguns podem ser mantidos por obrigacoes legais. A exclusao e irreversivel.</p>
                             </div>
                         </div>
                     </div>
@@ -1190,54 +2137,57 @@
             </div>
         </section>
 
-        <!-- Legal Documents Section -->
+        <!-- LEGAL SECTION -->
         <section id="legal" class="section-content hidden">
             <div class="section">
                 <div class="container">
                     <div class="legal-section">
                         <div class="section-header">
-                            <span class="section-tag fade-in">Documentos Legais</span>
-                            <h2 class="section-title fade-in">Transparência e<br><span class="gradient-text">conformidade legal</span></h2>
-                            <p class="section-subtitle fade-in">
-                                Acesse nossos documentos legais organizados por produto.
+                            <span class="section-number reveal">// 005</span>
+                            <h2 class="section-title reveal">
+                                Documentos <span class="gradient-text">Legais</span>
+                            </h2>
+                            <p class="section-subtitle reveal">
+                                Transparencia total. Acesse nossos documentos legais
+                                organizados por produto.
                             </p>
                         </div>
 
-                        <!-- Product Section: Comboa -->
+                        <!-- Comboa Documents -->
                         <div class="product-section">
-                            <div class="product-header fade-in">
-                                <h3>📱 Aplicativo Comboa</h3>
-                                <p>Documentos legais específicos para o aplicativo móvel de receitas fitness e estilo de vida saudável.</p>
+                            <div class="product-header reveal">
+                                <h3>Aplicativo Comboa</h3>
+                                <p>Documentos legais do aplicativo de receitas fitness e estilo de vida saudavel.</p>
                             </div>
 
                             <div class="documents-grid">
-                                <a href="privacy_policy_pdf.html" target="_blank" class="document-card fade-in">
+                                <a href="privacy_policy_pdf.html" target="_blank" class="document-card reveal">
                                     <div class="document-icon">🔒</div>
-                                    <h3>Política de Privacidade</h3>
-                                    <p>Como coletamos, processamos e protegemos suas informações pessoais conforme a LGPD.</p>
-                                    <div class="date">Atualizada em 13 de dezembro de 2025</div>
+                                    <h3>Politica de Privacidade</h3>
+                                    <p>Como coletamos, processamos e protegemos suas informacoes pessoais conforme a LGPD.</p>
+                                    <div class="date">Atualizada em 13/12/2025</div>
                                 </a>
 
-                                <a href="termos_uso_comboa_br.html" target="_blank" class="document-card fade-in">
+                                <a href="termos_uso_comboa_br.html" target="_blank" class="document-card reveal">
                                     <div class="document-icon">📋</div>
                                     <h3>Termos de Uso</h3>
-                                    <p>Condições gerais para uso do aplicativo Comboa e seus serviços relacionados.</p>
-                                    <div class="date">Atualizada em 13 de dezembro de 2025</div>
+                                    <p>Condicoes gerais para uso do aplicativo Comboa e seus servicos relacionados.</p>
+                                    <div class="date">Atualizada em 13/12/2025</div>
                                 </a>
 
-                                <a href="eula_brasil_pdf.html" target="_blank" class="document-card fade-in">
+                                <a href="eula_brasil_pdf.html" target="_blank" class="document-card reveal">
                                     <div class="document-icon">📱</div>
-                                    <h3>EULA - Comboa</h3>
-                                    <p>Contrato de Licença do Usuário Final específico para o aplicativo Comboa.</p>
-                                    <div class="date">Atualizada em 13 de dezembro de 2025</div>
+                                    <h3>EULA</h3>
+                                    <p>Contrato de Licenca do Usuario Final especifico para o aplicativo Comboa.</p>
+                                    <div class="date">Atualizada em 13/12/2025</div>
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Future Products Section -->
-                        <div class="future-products fade-in">
-                            <h3>🚀 Futuros Produtos</h3>
-                            <p>Novos produtos e seus respectivos documentos legais serão adicionados aqui conforme formos expandindo nosso portfólio.</p>
+                        <!-- Future Products -->
+                        <div class="future-products-box reveal">
+                            <h3>Futuros Produtos</h3>
+                            <p>Documentos legais de novos produtos serao adicionados conforme expandimos nosso portfolio.</p>
                         </div>
                     </div>
                 </div>
@@ -1245,30 +2195,161 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-icon"></div>
-                    <span>Gray Cat Corporation</span>
+                <div class="footer-brand">
+                    <a href="#home" class="logo" onclick="showSection('home')">
+                        <div class="logo-icon"></div>
+                        <span class="logo-text">Gray Cat</span>
+                    </a>
+                    <p>
+                        Pioneiros em desenvolvimento de aplicativos e jogos.
+                        Criando o futuro, uma linha de codigo por vez.
+                    </p>
                 </div>
-                <div class="footer-links">
-                    <a href="#home" onclick="showSection('home')">Início</a>
-                    <a href="#about" onclick="showSection('about')">Sobre</a>
-                    <a href="#services" onclick="showSection('services')">Serviços</a>
-                    <a href="#contact" onclick="showSection('contact')">Contato</a>
-                    <a href="#support" onclick="showSection('support')">Suporte</a>
-                    <a href="#legal" onclick="showSection('legal')">Documentos</a>
+                <div class="footer-column">
+                    <h4>Navegacao</h4>
+                    <ul>
+                        <li><a href="#home" onclick="showSection('home')">Inicio</a></li>
+                        <li><a href="#about" onclick="showSection('about')">Sobre</a></li>
+                        <li><a href="#apps" onclick="showSection('apps')">Apps</a></li>
+                        <li><a href="#services" onclick="showSection('services')">Servicos</a></li>
+                    </ul>
                 </div>
-                <div class="copyright">
-                    <p>&copy; 2025 Gray Cat Corporation. Todos os direitos reservados.</p>
+                <div class="footer-column">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#contact" onclick="showSection('contact')">Contato</a></li>
+                        <li><a href="#support" onclick="showSection('support')">Central de Ajuda</a></li>
+                        <li><a href="#legal" onclick="showSection('legal')">Documentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy_policy_pdf.html" target="_blank">Privacidade</a></li>
+                        <li><a href="termos_uso_comboa_br.html" target="_blank">Termos de Uso</a></li>
+                        <li><a href="eula_brasil_pdf.html" target="_blank">EULA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gray Cat Corporation. Todos os direitos reservados.</p>
+                <div class="footer-legal">
+                    <a href="privacy_policy_pdf.html" target="_blank">Politica de Privacidade</a>
+                    <a href="termos_uso_comboa_br.html" target="_blank">Termos de Uso</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // ==================== PRELOADER ====================
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 2500);
+        });
+
+        // ==================== CUSTOM CURSOR ====================
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursorDot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, .btn').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // ==================== PARTICLES ====================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width ||
+                    this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.1 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ==================== MOBILE MENU ====================
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             const menuToggle = document.getElementById('menuToggle');
@@ -1283,49 +2364,40 @@
             menuToggle.classList.remove('active');
         }
 
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
+        // ==================== HEADER SCROLL ====================
+        window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
-            if (window.scrollY > 50) {
+            if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
 
-        // Section Navigation
+        // ==================== SECTION NAVIGATION ====================
         function showSection(sectionId) {
-            // Hide all sections
             const sections = document.querySelectorAll('.section-content');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
+            sections.forEach(section => section.classList.add('hidden'));
 
-            // Show target section
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.remove('hidden');
 
-                // Reset and trigger fade-in animations
-                const elements = targetSection.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+                // Trigger reveal animations
+                const elements = targetSection.querySelectorAll('.reveal, .reveal-left, .reveal-right');
                 elements.forEach(el => el.classList.remove('visible'));
 
                 setTimeout(() => {
                     elements.forEach((el, index) => {
-                        setTimeout(() => {
-                            el.classList.add('visible');
-                        }, index * 100);
+                        setTimeout(() => el.classList.add('visible'), index * 100);
                     });
-                }, 50);
+                }, 100);
             }
 
-            // Update URL
             window.history.pushState({}, '', `#${sectionId}`);
-
-            // Smooth scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            // Update active nav link
+            // Update active nav
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${sectionId}`) {
@@ -1334,8 +2406,17 @@
             });
         }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                setTimeout(() => showSection(hash), 2600);
+            } else {
+                setTimeout(() => showSection('home'), 2600);
+            }
+        });
+
+        window.addEventListener('popstate', () => {
             const hash = window.location.hash.substring(1);
             if (hash && document.getElementById(hash)) {
                 showSection(hash);
@@ -1344,17 +2425,7 @@
             }
         });
 
-        // Handle browser navigation
-        window.addEventListener('popstate', function() {
-            const hash = window.location.hash.substring(1);
-            if (hash && document.getElementById(hash)) {
-                showSection(hash);
-            } else {
-                showSection('home');
-            }
-        });
-
-        // Intersection Observer for scroll animations
+        // ==================== SCROLL REVEAL ====================
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1368,8 +2439,7 @@
             });
         }, observerOptions);
 
-        // Observe all animated elements
-        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
             observer.observe(el);
         });
     </script>
